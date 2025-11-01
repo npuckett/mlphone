@@ -127,6 +127,9 @@ function draw() {
     handPointData2 = getKeypoint(handPointIndex2, 0);
     handPointData3 = getKeypoint(handPointIndex3, 0);
     handPointData4 = getKeypoint(handPointIndex4, 0);
+
+
+    
     
     // Store previous wrist position for velocity calculation
     handPointData5Prev = handPointData5;

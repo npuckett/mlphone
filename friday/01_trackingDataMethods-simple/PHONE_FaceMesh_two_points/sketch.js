@@ -144,8 +144,8 @@ function draw() {
     // Eyes: Check if both points are valid and display
     if (facePointData1 && facePointData2) {
       // Show the points in different colors
-      showPoint(facePointData1, color(255, 0, 0));  // Red
-      showPoint(facePointData2, color(0, 0, 255));  // Blue
+      //showPoint(facePointData1, color(255, 0, 0));  // Red
+      //showPoint(facePointData2, color(0, 0, 255));  // Blue
     }
     
     // Lips: Check if both points are valid and display

@@ -71,6 +71,10 @@ function draw() {
   // - higher speed = faster movement
   chaser.moveTo(leader.x, leader.y, 3);
   
+  // Add pulsing/breathing animation using sine wave
+  let pulse = sin(frameCount * 0.15) * 0.4 + 1; // Oscillates between 0.6 and 1.4 scale
+  chaser.scale = pulse;
+  
   // Calculate distance travelled this frame using velocity
   // p5play automatically calculates velocity based on position changes
   let distanceThisFrame = Math.sqrt(chaser.vel.x * chaser.vel.x + chaser.vel.y * chaser.vel.y);

@@ -18,12 +18,18 @@
    - [Key Differences: Simple vs Advanced](#key-differences-simple-vs-advanced)
    - [Tunable Parameters](#tunable-parameters-in-advanced-examples)
 
-3. [04 - ML5 + p5play Integration](#overview-of-04_ml5_p5play-examples)
+3. [03 - p5play Basics](#03---p5play-basics)
+   - [Example 1: Basic Chase](#example-1-basic-chase-p5play_01_basic_chase)
+   - [Example 2: Bouncing Ball](#example-2-bouncing-ball-p5play_03_bouncing_ball)
+   - [Essential p5play Concepts](#essential-p5play-concepts)
+   - [Sprite Properties Reference](#sprite-properties-reference)
+
+4. [04 - ML5 + p5play Integration](#04---ml5--p5play-integration)
    - [Example 1: Handpose Chase](#example-1-handpose-chase-p5play_02_handpose_chase)
    - [Example 2: Handpose Ball](#example-2-handpose-ball-p5play_04_handpose_ball)
    - [Example 3: Gaze Sprites](#example-3-gaze-sprites-p5play_05_gaze_sprites)
-   - [Essential p5play Methods](#essential-p5play-methods-summary)
    - [Integration Pattern: ML5 → p5play](#integration-pattern-ml5--p5play)
+   - [Key Integration Techniques](#key-integration-techniques)
 
 ---
 
@@ -622,45 +628,1034 @@ const HISTORY_LENGTH = 10;          // Frames to analyze
 
 ---
 
-## Building on These Patterns
+# 03 - p5play Basics
 
-The advanced examples show how to:
+This folder introduces **p5play**, a game and interactive physics library for p5.js. These examples demonstrate core p5play concepts that will be used in the next section (04_ml5_p5play) to connect ML5 tracking data with interactive sprites.
 
-1. **Access raw data** when needed (for Z-axis)
-2. **Store history** for pattern analysis
-3. **Smooth output** for stable interactions
-4. **Convert continuous data to discrete states** (CENTER/LEFT/RIGHT)
-5. **Analyze motion patterns** (vertical vs horizontal dominance)
-6. **Create confidence metrics** for reliability
-7. **Expose tunable parameters** for customization
+## Examples
 
-These techniques can be combined with the simple measurement functions to create:
-- Gesture-controlled games
-- Gaze-based UI navigation
-- Accessible input methods
-- Interactive art installations
-- And more!
+1. **p5play_01_basic_chase** - Mouse-controlled sprites with chase behavior
+2. **p5play_03_bouncing_ball** - Physics simulation with paddle interaction
 
 ---
 
-## Recommended Learning Path
+## Why Learn p5play?
 
-1. **Start with 01_trackingDataMethods-simple**
-   - Understand two-variable method
-   - Learn measurement functions
-   - Get comfortable with keypoint indices
+p5play provides:
+- **Sprites** - Interactive objects with built-in physics
+- **Movement methods** - `moveTo()`, `moveTowards()`, `attractTo()`
+- **Collision detection** - `overlaps()`, `collides()`
+- **Physics simulation** - Gravity, velocity, bounciness
+- **Easy animations** - Scale, rotation, color changes
 
-2. **Move to 02_trackingData-adv**
-   - See how measurements become interactions
-   - Learn velocity history and smoothing
-   - Understand state machines and thresholds
+**The connection to ML5:**
+- ML5 gives you **tracking data** (x, y positions)
+- p5play gives you **interactive objects** (sprites)
+- Combine them: tracking data → sprite movement
 
-3. **Experiment with parameters**
-   - Adjust thresholds and see effects
-   - Try different smoothing values
-   - Modify history length
+---
 
-4. **Build your own**
-   - Combine patterns from both folders
-   - Create new gesture types
-   - Design novel interactions
+## Example 1: Basic Chase (p5play_01_basic_chase)
+
+### What it demonstrates:
+- Creating sprites with `new Sprite()`
+- Kinematic physics (manual control)
+- `moveTo()` for smooth chasing behavior
+- `distanceTo()` for distance calculations
+- Sprite properties: `x`, `y`, `diameter`, `color`, `scale`
+- Animation using `scale` property
+
+### Key Code Patterns:
+
+#### 1. **Creating Sprites**
+
+```javascript
+// Create a sprite
+leader = new Sprite();
+leader.diameter = 50;
+leader.color = 'dodgerblue';
+leader.physics = 'kinematic';  // Manual control, no physics forces
+
+// Position the sprite
+leader.x = width / 2;
+leader.y = height / 2;
+```
+
+**Physics types:**
+- `'kinematic'` - Manual control (set x/y directly), no gravity
+- `'dynamic'` - Full physics simulation (affected by gravity, forces)
+- `'static'` - Doesn't move, but other sprites collide with it
+- `'none'` - No physics body at all
+
+#### 2. **Direct Position Control**
+
+```javascript
+// In draw() loop - sprite follows mouse
+leader.x = mouse.x;
+leader.y = mouse.y;
+```
+
+**Why kinematic?** Setting `x` and `y` directly only works smoothly with kinematic physics.
+
+#### 3. **Chase Behavior with moveTo()**
+
+```javascript
+// chaser automatically moves toward leader's position
+chaser.moveTo(leader.x, leader.y, 3);
+// Arguments: (targetX, targetY, speed)
+```
+
+**What moveTo() does:**
+- Calculates direction to target
+- Sets sprite's velocity to move toward target
+- Speed parameter controls how fast (pixels per frame)
+- Automatically stops at destination
+- Updates sprite's `direction` property
+
+#### 4. **Distance Calculations**
+
+```javascript
+// p5play provides built-in distance method
+let distance = leader.distanceTo(chaser);
+
+// Alternative using p5.js dist()
+let distance = dist(leader.x, leader.y, chaser.x, chaser.y);
+```
+
+#### 5. **Collision/Overlap Detection**
+
+```javascript
+// Set up overlap relationship (for kinematic sprites)
+chaser.overlaps(leader);
+
+// Manual distance-based detection
+let distanceBetween = dist(chaser.x, chaser.y, leader.x, leader.y);
+let touchingDistance = (chaser.diameter/2) + (leader.diameter/2);
+let isTouching = distanceBetween < touchingDistance;
+```
+
+#### 6. **Sprite Animation - Scale Property**
+
+```javascript
+// Pulsing/breathing animation
+let pulse = sin(frameCount * 0.15) * 0.4 + 1;  // Oscillates 0.6 to 1.4
+chaser.scale = pulse;
+```
+
+**Why scale instead of diameter?**
+- `scale` is a visual multiplier (1.0 = 100% size)
+- Works better with physics bodies
+- Animates smoothly without changing collider
+- Can scale x and y independently: `sprite.scale.x`, `sprite.scale.y`
+
+#### 7. **Accessing Sprite Velocity**
+
+```javascript
+// p5play automatically calculates velocity based on movement
+let speed = Math.sqrt(chaser.vel.x * chaser.vel.x + chaser.vel.y * chaser.vel.y);
+
+// Or use the built-in speed property
+let speed = chaser.speed;
+```
+
+---
+
+## Example 2: Bouncing Ball (p5play_03_bouncing_ball)
+
+### What it demonstrates:
+- Dynamic physics with gravity
+- Sprite groups for walls
+- Velocity-based movement
+- Ball-paddle collisions
+- Static physics (immovable walls)
+
+### Key Code Patterns:
+
+#### 1. **Setting Up World Physics**
+
+```javascript
+function setup() {
+  // Enable gravity
+  world.gravity.y = 10;  // Positive = down
+  
+  // world.gravity.x = 0;  // Horizontal gravity (optional)
+}
+```
+
+#### 2. **Dynamic Sprite (Ball)**
+
+```javascript
+ball = new Sprite();
+ball.diameter = 30;
+ball.color = 'yellow';
+ball.bounciness = 0.8;   // 0 = no bounce, 1 = perfect bounce
+ball.friction = 0.01;    // Surface friction (0 = slippery)
+
+// physics defaults to 'dynamic'
+// Dynamic sprites are affected by gravity and forces
+```
+
+**Dynamic physics properties:**
+- `bounciness` (0-1) - Energy retained after collision
+- `friction` (0-1) - Resistance when sliding
+- `mass` - Affects collisions (auto-calculated from size)
+- `drag` - Air resistance
+- `gravityScale` - Multiplier for gravity effect (default 1)
+
+#### 3. **Kinematic Sprite (Paddle)**
+
+```javascript
+paddle = new Sprite();
+paddle.width = 100;
+paddle.height = 20;
+paddle.physics = 'kinematic';  // Manual control but still collides
+```
+
+**Kinematic + Collisions:** Kinematic sprites can collide with dynamic sprites but won't be pushed by them.
+
+#### 4. **Velocity-Based Movement**
+
+```javascript
+// Calculate direction to mouse
+let dx = mouse.x - paddle.x;
+let dy = mouse.y - paddle.y;
+
+// Set velocity directly for smooth following
+paddle.vel.x = dx * 0.3;  // 0.3 = responsiveness factor
+paddle.vel.y = dy * 0.3;
+```
+
+**Why velocity instead of moveTo()?**
+- More responsive control
+- Better for physics interactions
+- Maintains collision detection
+- Smoother for fast movement
+
+**Comparison:**
+```javascript
+// moveTo() - moves toward target at constant speed
+sprite.moveTo(x, y, speed);
+
+// velocity - sets movement rate, recalculated each frame
+sprite.vel.x = dx * factor;
+sprite.vel.y = dy * factor;
+```
+
+#### 5. **Static Sprites (Walls)**
+
+```javascript
+walls = new Group();
+walls.color = 'gray';
+walls.physics = 'static';  // Never moves
+
+// Create walls using the group as a constructor
+new walls.Sprite(width/2, -5, width, 10);  // Top wall
+new walls.Sprite(width/2, height + 5, width, 10);  // Bottom
+new walls.Sprite(-5, height/2, 10, height);  // Left
+new walls.Sprite(width + 5, height/2, 10, height);  // Right
+```
+
+**Static sprites:**
+- Completely immovable
+- Other sprites collide and bounce off them
+- Perfect for walls, floors, platforms
+- No computational cost for physics (don't move)
+
+#### 6. **Sprite Groups**
+
+```javascript
+// Create a group
+walls = new Group();
+
+// Set properties for all sprites in group
+walls.color = 'gray';
+walls.physics = 'static';
+
+// Create sprites in the group
+new walls.Sprite(x, y, w, h);
+```
+
+**Group benefits:**
+- Apply properties to multiple sprites at once
+- Collision detection with entire group: `ball.collides(walls)`
+- Organize related sprites
+- Iterate through group: `for (let wall of walls)`
+
+---
+
+## Essential p5play Concepts
+
+### Sprite Creation Patterns
+
+```javascript
+// Basic sprite (50x50 box at center)
+let sprite = new Sprite();
+
+// Sprite at position (x, y)
+let sprite = new Sprite(x, y);
+
+// Box sprite with dimensions
+let sprite = new Sprite(x, y, width, height);
+
+// Circle sprite (if only 3 params)
+let sprite = new Sprite(x, y, diameter);
+```
+
+### Movement Methods Summary
+
+| Method | Use Case | Control Type |
+|--------|----------|--------------|
+| `sprite.x = value` | Direct teleport | Immediate |
+| `sprite.vel.x = value` | Set velocity | Physics-based |
+| `moveTo(x, y, speed)` | Move toward point | Automatic |
+| `moveTowards(x, y, tracking)` | Gradual approach | Percentage-based |
+| `attractTo(x, y, force)` | Apply force toward | Physics force |
+
+### Distance and Collision
+
+```javascript
+// Distance between sprites
+let dist = sprite1.distanceTo(sprite2);
+
+// Set up collision relationship
+sprite1.collides(sprite2, callback);
+sprite1.overlaps(sprite2, callback);
+
+// Check in draw()
+if (sprite1.colliding(sprite2)) {
+  // Collision is happening
+}
+```
+
+---
+
+## Sprite Properties Reference
+
+### Position
+```javascript
+sprite.x, sprite.y        // Position
+sprite.vel.x, sprite.vel.y  // Velocity (pixels per frame)
+sprite.direction          // Angle of movement (degrees)
+sprite.speed              // Movement speed
+```
+
+### Appearance
+```javascript
+sprite.color              // Fill color
+sprite.diameter           // For circles
+sprite.width, sprite.height  // For boxes
+sprite.scale              // Size multiplier (1.0 = normal)
+sprite.rotation           // Rotation angle (degrees)
+sprite.opacity            // Transparency (0-1)
+```
+
+### Physics
+```javascript
+sprite.physics            // 'dynamic', 'kinematic', 'static', 'none'
+sprite.bounciness         // 0-1 (default 0.2)
+sprite.friction           // 0-1 (default 0.5)
+sprite.mass               // Calculated from size and density
+sprite.gravityScale       // Gravity multiplier (default 1)
+```
+
+### Animation
+```javascript
+sprite.scale              // Visual size multiplier
+sprite.rotation           // Rotation angle
+sprite.rotationSpeed      // Auto-rotation per frame
+sprite.opacity            // Fade in/out
+```
+
+---
+
+## Key Takeaways
+
+1. **Three physics types:**
+   - `kinematic` - Manual control (for tracking data)
+   - `dynamic` - Full physics (for game objects)
+   - `static` - Immovable (for boundaries)
+
+2. **Movement approaches:**
+   - Direct: `sprite.x = value` (kinematic only)
+   - Velocity: `sprite.vel.x = value` (smooth physics)
+   - Methods: `moveTo()`, `attractTo()` (automated)
+
+3. **Collision detection:**
+   - Set relationship: `sprite.overlaps(target)`
+   - Check state: `sprite.overlapping(target)`
+   - Works with groups: `sprite.collides(group)`
+
+4. **Animation:**
+   - Use `scale` for size animation
+   - Use `rotation` for spin animation
+   - Use `sin(frameCount)` for oscillation
+
+5. **Next step:** Connect ML5 tracking data to sprite movement!
+
+---
+
+# 04 - ML5 + p5play Integration
+
+This folder brings together everything from sections 01-03, combining **ML5 tracking data** with **p5play sprites** to create interactive experiences. These examples demonstrate the key pattern: **tracking data controls sprite positions**.
+
+## Examples
+
+1. **p5play_02_handpose_chase** - Hand tracking controls leader sprite, chaser follows
+2. **p5play_04_handpose_ball** - Four fingertips control paddles, balls bounce with physics
+3. **p5play_05_gaze_sprites** - Gaze detection controls sprite, interacts with targets
+
+---
+
+## Integration Pattern: ML5 → p5play
+
+The core pattern used in all three examples:
+
+```javascript
+// 1. GET tracking data (from ML5)
+fingerData = getKeypoint(fingerIndex, 0);
+
+// 2. SET sprite position (p5play)
+if (fingerData) {
+  sprite.x = fingerData.x;
+  sprite.y = fingerData.y;
+}
+```
+
+**Why this works:**
+- ML5 gives you `{x, y}` coordinates from tracking
+- p5play sprites have `x` and `y` properties
+- Simply assign one to the other!
+
+---
+
+## Example 1: Handpose Chase (p5play_02_handpose_chase)
+
+### What it demonstrates:
+- **ML5 HandPose** tracking index fingertip (keypoint 8)
+- **p5play kinematic sprite** controlled by finger position
+- **Chase behavior** using `moveTo()`
+- **Velocity-based movement** for smooth finger control
+- **Collision detection** with `overlaps()`
+- **Statistics tracking** (distance, catches)
+
+### Key Integration Code:
+
+#### 1. **Setup: Camera + ML5 + p5play**
+
+```javascript
+function setup() {
+  createCanvas(405, 720);
+  
+  // Camera setup
+  cam = createPhoneCamera('user', true, 'fitHeight');
+  
+  // ML5 HandPose setup (after camera ready)
+  cam.onReady(() => {
+    let options = {
+      maxHands: 1,
+      runtime: 'mediapipe',
+      flipHorizontal: false  // cam.mapKeypoint() handles mirroring
+    };
+    handpose = ml5.handPose(options, () => {
+      handpose.detectStart(cam.videoElement, gotHands);
+    });
+  });
+  
+  // p5play sprites
+  leader = new Sprite();
+  leader.physics = 'kinematic';  // Manual control
+  
+  chaser = new Sprite();
+  chaser.physics = 'kinematic';
+  chaser.overlaps(leader);  // Set up collision detection
+}
+```
+
+**Key setup pattern:**
+1. Create camera first
+2. Wait for `cam.onReady()` before creating ML5 model
+3. Create sprites with `kinematic` physics for manual control
+
+#### 2. **Draw: Connect Tracking to Sprites**
+
+```javascript
+function draw() {
+  // Default position (when no hand detected)
+  let targetX = width / 2;
+  let targetY = height / 2;
+  
+  // Get tracking data
+  if (hands.length > 0) {
+    fingerData = getKeypoint(8, 0);  // Index finger tip
+    
+    if (fingerData) {
+      targetX = fingerData.x;
+      targetY = fingerData.y;
+    }
+  }
+  
+  // Move leader using velocity (smooth following)
+  let dx = targetX - leader.x;
+  let dy = targetY - leader.y;
+  leader.vel.x = dx * 0.3;  // 0.3 = responsiveness factor
+  leader.vel.y = dy * 0.3;
+  
+  // Chaser automatically follows leader
+  chaser.moveTo(leader.x, leader.y, 3);
+}
+```
+
+**Why velocity instead of direct position?**
+```javascript
+// OPTION A: Direct position (can be jumpy)
+leader.x = fingerData.x;
+leader.y = fingerData.y;
+
+// OPTION B: Velocity-based (smooth, responsive)
+let dx = targetX - leader.x;
+leader.vel.x = dx * 0.3;  // Move 30% of distance per frame
+```
+
+**Velocity benefits:**
+- Smooths out tracking jitter
+- Creates natural-feeling movement
+- Maintains physics collision detection
+- Adjustable responsiveness (0.1 = slow, 0.5 = fast)
+
+#### 3. **Collision Detection**
+
+```javascript
+// Method 1: p5play's overlaps() (first frame only)
+if (chaser.overlaps(leader)) {
+  timesCaught++;
+  console.log('Caught!');
+}
+
+// Method 2: overlapping() (continuous check)
+if (chaser.overlapping(leader)) {
+  // This is true while sprites are touching
+  chaser.color = 'green';
+}
+```
+
+**Difference:**
+- `overlaps()` - Returns `true` on **first frame** of overlap
+- `overlapping()` - Returns frame count **while** overlapping
+
+#### 4. **Helper Function: getKeypoint()**
+
+```javascript
+function getKeypoint(index, handNumber = 0) {
+  // Check if we have hands detected
+  if (!hands || hands.length === 0) return null;
+  if (handNumber >= hands.length) return null;
+  if (!hands[handNumber].keypoints) return null;
+  if (index >= hands[handNumber].keypoints.length) return null;
+  
+  // Get the keypoint data
+  let keypoint = hands[handNumber].keypoints[index];
+  
+  // Map coordinates using PhoneCamera
+  // Handles mirroring and scaling automatically
+  let mapped = cam.mapKeypoint(keypoint);
+  
+  return mapped;  // {x, y, confidence}
+}
+```
+
+**Critical:** Always use `cam.mapKeypoint()` to transform ML5 coordinates to canvas coordinates.
+
+---
+
+## Example 2: Handpose Ball (p5play_04_handpose_ball)
+
+### What it demonstrates:
+- **Multiple sprites** controlled by multiple keypoints
+- **Four fingertips** (8, 12, 16, 20) control four paddles
+- **Dynamic ball physics** with gravity
+- **Kinematic paddles** that collide with dynamic balls
+- **Sprite groups** for organization
+
+### Key Integration Code:
+
+#### 1. **Multiple Tracking Points**
+
+```javascript
+// Track 4 fingertips
+let fingerIndices = [8, 12, 16, 20];  // Index, Middle, Ring, Pinky
+let fingerData = [null, null, null, null];
+
+// Create 4 paddles
+paddles = new Group();
+paddles.width = 80;
+paddles.height = 15;
+paddles.physics = 'kinematic';
+
+for (let i = 0; i < 4; i++) {
+  let p = new paddles.Sprite();
+  p.color = ['red', 'blue', 'green', 'purple'][i];
+}
+```
+
+#### 2. **Update Multiple Sprites from Tracking**
+
+```javascript
+function draw() {
+  // Loop through each fingertip and corresponding paddle
+  for (let i = 0; i < 4; i++) {
+    // Default position
+    let targetX = defaultPositions[i].x;
+    let targetY = defaultPositions[i].y;
+    
+    // Get tracking data for this finger
+    if (hands.length > 0) {
+      fingerData[i] = getKeypoint(fingerIndices[i], 0);
+      
+      if (fingerData[i]) {
+        targetX = fingerData[i].x;
+        targetY = fingerData[i].y;
+      }
+    }
+    
+    // Get the corresponding paddle from the group
+    let paddle = paddles[i];
+    
+    // Move paddle to target position
+    let dx = targetX - paddle.x;
+    let dy = targetY - paddle.y;
+    paddle.vel.x = dx * 0.3;
+    paddle.vel.y = dy * 0.3;
+  }
+}
+```
+
+**Pattern:** Arrays for tracking data, sprite groups for game objects, loop to connect them.
+
+#### 3. **Physics Interaction**
+
+```javascript
+// Set up world physics
+world.gravity.y = 10;  // Gravity pulls down
+
+// Create dynamic balls (affected by physics)
+balls = new Group();
+balls.diameter = 25;
+balls.bounciness = 0.8;
+balls.friction = 0.01;
+
+for (let i = 0; i < 5; i++) {
+  let b = new balls.Sprite();
+  b.x = 50 + i * 80;
+  b.y = 50 + i * 30;
+}
+
+// Paddles are kinematic (manual control but still collide)
+paddles.physics = 'kinematic';
+```
+
+**Physics interaction:**
+- `dynamic` balls fall with gravity and bounce
+- `kinematic` paddles controlled by hands
+- Collisions work automatically between them
+- No need to explicitly set up collision relationships
+
+#### 4. **Sprite Groups Benefits**
+
+```javascript
+// Create group
+balls = new Group();
+
+// Set properties for all sprites in group
+balls.diameter = 25;
+balls.bounciness = 0.8;
+
+// Create individual sprites in the group
+for (let i = 0; i < 5; i++) {
+  let b = new balls.Sprite();  // Automatically inherits group properties
+  b.color = colors[i];          // Individual customization
+}
+
+// Access sprites by index
+let firstBall = balls[0];
+let secondBall = balls[1];
+```
+
+---
+
+## Example 3: Gaze Sprites (p5play_05_gaze_sprites)
+
+### What it demonstrates:
+- **ML5 FaceMesh** gaze detection (from section 02)
+- **p5play sprite** controlled by gaze position
+- **Overlap interactions** with multiple target sprites
+- **Visual feedback** (color/scale changes on overlap)
+- **Advanced tracking** (3D data, normalization, smoothing)
+
+### Key Integration Code:
+
+#### 1. **Gaze Detection → Sprite Position**
+
+```javascript
+function draw() {
+  // Default position
+  let targetX = width / 2;
+  let targetY = height / 2;
+  
+  // Calculate gaze if face detected
+  if (faces.length > 0) {
+    calculateGaze();  // Updates gazeX, gazeY (from section 02)
+    targetX = gazeX;
+    targetY = gazeY;
+  }
+  
+  // Move sprite to gaze position
+  let dx = targetX - gazeSprite.x;
+  let dy = targetY - gazeSprite.y;
+  gazeSprite.vel.x = dx * 0.3;
+  gazeSprite.vel.y = dy * 0.3;
+}
+```
+
+**Integration:** The advanced gaze calculation (section 02) produces `gazeX, gazeY` coordinates that directly control the sprite.
+
+#### 2. **Sprite Interactions**
+
+```javascript
+// Create gaze-controlled sprite
+gazeSprite = new Sprite();
+gazeSprite.diameter = 50;
+gazeSprite.color = 'yellow';
+gazeSprite.physics = 'kinematic';
+
+// Create target sprites
+targetSprites = new Group();
+targetSprites.diameter = 40;
+targetSprites.physics = 'kinematic';
+
+for (let i = 0; i < 12; i++) {
+  let target = new targetSprites.Sprite();
+  target.x = random(50, width - 50);
+  target.y = random(100, height - 100);
+  target.originalColor = target.color;  // Store for resetting
+}
+
+// Set up overlap detection
+gazeSprite.overlaps(targetSprites);
+```
+
+#### 3. **Overlap-Based Interactions**
+
+```javascript
+for (let target of targetSprites) {
+  if (gazeSprite.overlaps(target)) {
+    // First frame of overlap - trigger event
+    target.color = 'white';
+    target.scale = 1.5;
+    
+  } else if (gazeSprite.overlapping(target)) {
+    // Continue while overlapping
+    target.color = 'white';
+    target.scale = 1.5;
+    
+  } else {
+    // Not overlapping - return to normal
+    target.color = target.originalColor;
+    target.scale = lerp(target.scale, 1.0, 0.1);  // Smooth transition
+  }
+}
+```
+
+**Interaction states:**
+1. `overlaps()` - First frame of contact
+2. `overlapping()` - While in contact
+3. Neither - Not in contact
+
+**Visual feedback:**
+- Color change shows active interaction
+- Scale change adds emphasis
+- `lerp()` smooths transitions back to normal
+
+#### 4. **Advanced Tracking Integration**
+
+```javascript
+function calculateGaze() {
+  // Get raw 3D keypoints (from section 02 pattern)
+  let leftEarRaw = faces[0].keypoints[leftEarIndex];
+  let rightEarRaw = faces[0].keypoints[rightEarIndex];
+  let noseRaw = faces[0].keypoints[noseIndex];
+  
+  // Calculate face width for normalization
+  let faceWidth = abs(leftEarRaw.x - rightEarRaw.x);
+  
+  // Calculate normalized offset
+  let earCenterX = (leftEarRaw.x + rightEarRaw.x) / 2;
+  let noseOffsetX = noseRaw.x - earCenterX;
+  let normalizedOffsetX = noseOffsetX / faceWidth;
+  
+  // Map to screen coordinates with smoothing
+  gazeX = lerp(gazeX, 
+    width / 2 - (normalizedOffsetX * width * GAZE_RANGE_X), 
+    1 - SMOOTHING_FACTOR);
+    
+  gazeX = constrain(gazeX, 0, width);
+}
+```
+
+**This connects:**
+- Section 02's advanced gaze detection algorithm
+- Section 03's sprite movement techniques
+- Creates smooth, responsive gaze-controlled sprite
+
+---
+
+## Key Integration Techniques
+
+### 1. **Always Use Default Positions**
+
+```javascript
+// Good pattern: Sprite always has a position
+let targetX = width / 2;  // Default
+let targetY = height / 2;
+
+if (trackingData) {
+  targetX = trackingData.x;  // Override with tracking
+  targetY = trackingData.y;
+}
+
+sprite.x = targetX;  // Sprite always has valid position
+```
+
+**Why?** When tracking fails (hand leaves view, face turns away), sprite doesn't disappear or freeze.
+
+### 2. **Velocity-Based Movement**
+
+```javascript
+// Calculate distance to target
+let dx = targetX - sprite.x;
+let dy = targetY - sprite.y;
+
+// Set velocity (fraction of distance)
+sprite.vel.x = dx * 0.3;  // Move 30% of distance per frame
+sprite.vel.y = dy * 0.3;
+```
+
+**Benefits:**
+- Smooths tracking jitter
+- Creates natural acceleration/deceleration
+- Maintains collision detection
+- Adjustable responsiveness (0.1-0.5 typical range)
+
+**Responsiveness scale:**
+- `0.1` - Very smooth, slow response
+- `0.3` - Balanced (most common)
+- `0.5` - Fast, responsive
+- `1.0` - Instant (no smoothing)
+
+### 3. **First Frame Teleport**
+
+```javascript
+let isFirstFrame = true;
+
+function draw() {
+  if (isFirstFrame) {
+    sprite.x = targetX;  // Teleport on first frame
+    sprite.y = targetY;
+    isFirstFrame = false;
+  } else {
+    sprite.vel.x = dx * 0.3;  // Use velocity after first frame
+    sprite.vel.y = dy * 0.3;
+  }
+}
+```
+
+**Why?** Prevents sprite from slowly moving from center to hand position on startup.
+
+### 4. **Coordinate Mapping**
+
+```javascript
+// ALWAYS map ML5 coordinates to canvas coordinates
+function getKeypoint(index, handNumber = 0) {
+  // ... error checking ...
+  
+  let keypoint = hands[handNumber].keypoints[index];
+  
+  // Critical: Transform coordinates
+  let mapped = cam.mapKeypoint(keypoint);
+  
+  return mapped;  // {x, y, confidence}
+}
+```
+
+**What `cam.mapKeypoint()` does:**
+- Scales from camera resolution to canvas resolution
+- Handles mirroring for front-facing camera
+- Adjusts for `fitHeight`, `fitWidth`, or `cover` mode
+- Returns coordinates ready for canvas drawing
+
+### 5. **Physics Types for Interaction**
+
+```javascript
+// Tracking-controlled sprites: kinematic
+leader.physics = 'kinematic';
+paddle.physics = 'kinematic';
+
+// Game physics objects: dynamic
+ball.physics = 'dynamic';
+ball.bounciness = 0.8;
+
+// Boundaries: static
+walls.physics = 'static';
+```
+
+**Why kinematic for tracking?**
+- You control position directly
+- Still collides with other sprites
+- Not affected by gravity or forces
+- Perfect for hand/gaze control
+
+### 6. **Group-Based Organization**
+
+```javascript
+// Create groups for different types of objects
+let trackingSprites = new Group();  // Controlled by ML5
+trackingSprites.physics = 'kinematic';
+
+let gameObjects = new Group();      // Physics simulation
+gameObjects.physics = 'dynamic';
+
+let boundaries = new Group();        // Static walls
+boundaries.physics = 'static';
+```
+
+**Benefits:**
+- Apply properties to multiple sprites at once
+- Organize code by object type
+- Collision detection with groups: `sprite.collides(group)`
+- Easy iteration: `for (let s of group)`
+
+---
+
+## Complete Integration Workflow
+
+### Setup Phase
+
+```javascript
+function setup() {
+  // 1. Canvas
+  createCanvas(405, 720);
+  
+  // 2. Camera
+  cam = createPhoneCamera('user', true, 'fitHeight');
+  
+  // 3. ML5 (after camera ready)
+  cam.onReady(() => {
+    let options = { /* ... */ };
+    model = ml5.handPose(options, () => {
+      model.detectStart(cam.videoElement, callback);
+    });
+  });
+  
+  // 4. p5play sprites
+  sprite = new Sprite();
+  sprite.physics = 'kinematic';
+  
+  // 5. Physics setup (if needed)
+  world.gravity.y = 10;
+}
+```
+
+### Draw Phase
+
+```javascript
+function draw() {
+  // 1. Draw camera (optional)
+  if (showVideo) image(cam, 0, 0);
+  
+  // 2. Get tracking data
+  let trackingData = getKeypoint(index, 0);
+  
+  // 3. Calculate target position
+  let targetX = width / 2;  // Default
+  let targetY = height / 2;
+  
+  if (trackingData) {
+    targetX = trackingData.x;
+    targetY = trackingData.y;
+  }
+  
+  // 4. Move sprite
+  let dx = targetX - sprite.x;
+  let dy = targetY - sprite.y;
+  sprite.vel.x = dx * 0.3;
+  sprite.vel.y = dy * 0.3;
+  
+  // 5. Check interactions
+  if (sprite.overlaps(target)) {
+    // Do something
+  }
+}
+```
+
+### Helper Functions
+
+```javascript
+// Callback for ML5 results
+function gotHands(results) {
+  hands = results;
+}
+
+// Get mapped keypoint
+function getKeypoint(index, num = 0) {
+  if (!hands || hands.length === 0) return null;
+  if (num >= hands.length) return null;
+  
+  let keypoint = hands[num].keypoints[index];
+  return cam.mapKeypoint(keypoint);
+}
+```
+
+---
+
+## Key Takeaways
+
+1. **The core pattern is simple:**
+   ```javascript
+   trackingData = getKeypoint(index, 0);
+   if (trackingData) {
+     sprite.x = trackingData.x;
+     sprite.y = trackingData.y;
+   }
+   ```
+
+2. **Use velocity for smooth movement:**
+   - Reduces jitter from tracking
+   - Creates natural-feeling motion
+   - Factor of 0.3 is a good starting point
+
+3. **Always provide default positions:**
+   - Sprites work even when tracking fails
+   - Better user experience
+   - Prevents null errors
+
+4. **Use kinematic physics for tracking:**
+   - Manual position control
+   - Still collides with other sprites
+   - Not affected by gravity
+
+5. **Coordinate mapping is critical:**
+   - Always use `cam.mapKeypoint()`
+   - Handles mirroring and scaling
+   - Camera space ≠ Canvas space
+
+6. **Sprite groups organize code:**
+   - Group by function (tracking, physics, static)
+   - Apply properties to multiple sprites
+   - Collision detection with groups
+
+7. **p5play + ML5 = Interactive experiences:**
+   - ML5 provides tracking data (input)
+   - p5play provides game mechanics (interaction)
+   - Combining them creates responsive experiences
+
+---
+
