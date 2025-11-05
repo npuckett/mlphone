@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wednesday Projects - p5play Character Animation</title>
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Courier New', monospace;
+      background-color: white;
+      color: black;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      font-size: 24px;
+      margin-bottom: 30px;
+      border-bottom: 2px solid black;
+      padding-bottom: 10px;
+    }
+    
+    h2 {
+      font-size: 18px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    
+    .project {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .project:last-child {
+      border-bottom: none;
+    }
+    
+    .project-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .link-container {
+      margin-bottom: 10px;
+    }
+    
+    a {
+      color: black;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+    
+    a:hover {
+      background-color: black;
+      color: white;
+    }
+    
+    .qr-code {
+      margin-top: 10px;
+      image-rendering: pixelated;
+    }
+    
+    .qr-code img {
+      width: 150px;
+      height: 150px;
+      border: 2px solid black;
+    }
+  </style>
+  
+  <!-- QR Code Generator Library -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+  <h1>Wednesday Projects - p5play Character Animation</h1>
+  
+  <h2>p5Play Animation Examples</h2>
+  
+  <div class="project">
+    <div class="project-title">p5play_00_animation_controls</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_00_animation_controls/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_00_animation_controls/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-00-controls"></div>
+  </div>
+  
+  <div class="project">
+    <div class="project-title">p5play_01_animated_character_phone_simple</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_01_animated_character_phone_simple/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_01_animated_character_phone_simple/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-01-simple"></div>
+  </div>
+  
+  <div class="project">
+    <div class="project-title">p5play_02_animated_character_phone</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_02_animated_character_phone/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_02_animated_character_phone/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-02-tiredness"></div>
+  </div>
+  
+  <div class="project">
+    <div class="project-title">p5play_03_tilt_character</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_03_tilt_character/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_03_tilt_character/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-03-tilt"></div>
+  </div>
+  
+  <div class="project">
+    <div class="project-title">p5play_04_sound_introversion</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_04_sound_introversion/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_04_sound_introversion/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-04-sound"></div>
+  </div>
+  
+  <div class="project">
+    <div class="project-title">p5play_05_gaze_sprites</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_05_gaze_sprites/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_05_gaze_sprites/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-05-gaze"></div>
+  </div>
+  
+  <script>
+    // Generate QR codes for all links
+    const projects = [
+      { id: 'qr-00-controls', url: 'https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_00_animation_controls/' },
+      { id: 'qr-01-simple', url: 'https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_01_animated_character_phone_simple/' },
+      { id: 'qr-02-tiredness', url: 'https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_02_animated_character_phone/' },
+      { id: 'qr-03-tilt', url: 'https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_03_tilt_character/' },
+      { id: 'qr-04-sound', url: 'https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_04_sound_introversion/' },
+      { id: 'qr-05-gaze', url: 'https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_05_gaze_sprites/' }
+    ];
+    
+    projects.forEach(project => {
+      new QRCode(document.getElementById(project.id), {
+        text: project.url,
+        width: 150,
+        height: 150,
+        colorDark: '#000000',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    });
+  </script>
+</body>
+</html>

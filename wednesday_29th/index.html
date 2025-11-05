@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wednesday 29th - ML5 Phone Camera Basics</title>
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Courier New', monospace;
+      background-color: white;
+      color: black;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      font-size: 24px;
+      margin-bottom: 30px;
+      border-bottom: 2px solid black;
+      padding-bottom: 10px;
+    }
+    
+    h2 {
+      font-size: 18px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    
+    .project {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .project:last-child {
+      border-bottom: none;
+    }
+    
+    .project-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .link-container {
+      margin-bottom: 10px;
+    }
+    
+    a {
+      color: black;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+    
+    a:hover {
+      background-color: black;
+      color: white;
+    }
+    
+    .qr-code {
+      margin-top: 10px;
+      image-rendering: pixelated;
+    }
+    
+    .qr-code img {
+      width: 150px;
+      height: 150px;
+      border: 2px solid black;
+    }
+  </style>
+  
+  <!-- QR Code Generator Library -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+  <h1>Wednesday 29th - ML5 Phone Camera Basics</h1>
+  
+  <h2>ML5 Camera Setup Examples</h2>
+  
+  <div class="project">
+    <div class="project-title">PHONE_01_camera-selector</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_29th/PHONE_01_camera-selector/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_29th/PHONE_01_camera-selector/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-01-camera"></div>
+  </div>
+  
+  <div class="project">
+    <div class="project-title">PHONE_02_facemesh</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_29th/PHONE_02_facemesh/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_29th/PHONE_02_facemesh/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-02-facemesh"></div>
+  </div>
+  
+  <div class="project">
+    <div class="project-title">PHONE_03_handpose</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_29th/PHONE_03_handpose/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_29th/PHONE_03_handpose/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-03-handpose"></div>
+  </div>
+  
+  <div class="project">
+    <div class="project-title">PHONE_04_bodypose</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_29th/PHONE_04_bodypose/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_29th/PHONE_04_bodypose/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-04-bodypose"></div>
+  </div>
+  
+  <script>
+    // Generate QR codes for all links
+    const projects = [
+      { id: 'qr-01-camera', url: 'https://npuckett.github.io/mlphone/wednesday_29th/PHONE_01_camera-selector/' },
+      { id: 'qr-02-facemesh', url: 'https://npuckett.github.io/mlphone/wednesday_29th/PHONE_02_facemesh/' },
+      { id: 'qr-03-handpose', url: 'https://npuckett.github.io/mlphone/wednesday_29th/PHONE_03_handpose/' },
+      { id: 'qr-04-bodypose', url: 'https://npuckett.github.io/mlphone/wednesday_29th/PHONE_04_bodypose/' }
+    ];
+    
+    projects.forEach(project => {
+      new QRCode(document.getElementById(project.id), {
+        text: project.url,
+        width: 150,
+        height: 150,
+        colorDark: '#000000',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    });
+  </script>
+</body>
+</html>
