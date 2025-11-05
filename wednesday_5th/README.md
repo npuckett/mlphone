@@ -1,5 +1,7 @@
 # Wednesday Examples - p5play Character Animation
 
+**Live Demo Index:** https://npuckett.github.io/mlphone/wednesday_5th/
+
 A progressive series of examples exploring animated character behavior with p5play, building from basic animation control to complex sensor-driven interactions.
 
 ---
