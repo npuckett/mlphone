@@ -194,6 +194,7 @@ function draw() {
   
   // Step 4: Draw visual indicators
   drawTarget();
+  drawTirednessDisplay();
   
   // Step 5: Update debug panel with current stats
   updateDebugPanel();
@@ -263,6 +264,46 @@ function drawTarget() {
     line(targetX, targetY - 10, targetX, targetY + 10);
     pop();
   }
+}
+
+// ==============================================
+// HELPER - Draw tiredness display on screen
+// ==============================================
+function drawTirednessDisplay() {
+  push();
+  
+  // Draw tiredness bar at top of screen
+  let barWidth = 200;
+  let barHeight = 20;
+  let barX = (width - barWidth) / 2;
+  let barY = 20;
+  
+  // Background bar
+  fill(50);
+  noStroke();
+  rect(barX, barY, barWidth, barHeight, 5);
+  
+  // Filled portion based on tiredness
+  let fillWidth = map(tiredness, 0, 100, 0, barWidth);
+  
+  // Color changes based on tiredness level
+  if (tiredness < 33) {
+    fill(100, 200, 100); // Green when rested
+  } else if (tiredness < 66) {
+    fill(255, 200, 50);  // Yellow when moderately tired
+  } else {
+    fill(255, 100, 100); // Red when exhausted
+  }
+  
+  rect(barX, barY, fillWidth, barHeight, 5);
+  
+  // Label text
+  fill(255);
+  textSize(14);
+  textAlign(CENTER, CENTER);
+  text(`Tiredness: ${Math.floor(tiredness)}%`, width / 2, barY + barHeight + 15);
+  
+  pop();
 }
 
 // ==============================================
