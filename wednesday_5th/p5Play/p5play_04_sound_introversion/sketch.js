@@ -58,7 +58,7 @@ let walkBackAni;             // Walk backward animation (away from viewer)
 // Sound Input System
 let mic;                     // Microphone input object
 let micMultiplier = 3;       // Increase sensitivity
-let soundThreshold = 0.01;   // Microphone level that counts as "loud" (0.0-1.0)
+let soundThreshold = 0.03;   // Microphone level that counts as "loud" (0.0-1.0)
 let currentLevel = 0;        // Current microphone level
 
 // Introversion System
