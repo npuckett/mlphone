@@ -4,7 +4,7 @@ A comprehensive collection of mobile-first machine learning examples using p5.js
 
 ---
 
-## 📱 Live Demos
+## Live Demos
 
 - **[Wednesday 29th - ML5 Camera Basics](https://npuckett.github.io/mlphone/wednesday_29th/)** - Foundation examples
 - **[Friday - ML5 + p5play Integration](https://npuckett.github.io/mlphone/friday/)** - Advanced tracking & sprites
@@ -12,7 +12,7 @@ A comprehensive collection of mobile-first machine learning examples using p5.js
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 - **[Wednesday 29th README](wednesday_29th/README.md)** - ML5 camera setup and basic tracking
 - **[Friday README](friday/README.md)** - Advanced tracking methods and p5play integration
@@ -20,7 +20,7 @@ A comprehensive collection of mobile-first machine learning examples using p5.js
 
 ---
 
-## 🗂️ Repository Structure
+## Repository Structure
 
 ### wednesday_29th/ - ML5 Camera Basics
 **Foundation examples for ML5 pose tracking with p5-phone camera management**
@@ -88,7 +88,7 @@ A comprehensive collection of mobile-first machine learning examples using p5.js
 
 ---
 
-## 🛠️ Technologies
+## Technologies
 
 ### Core Libraries
 - **[p5.js v1.11.4](https://p5js.org/)** - Creative coding framework
@@ -105,7 +105,7 @@ A comprehensive collection of mobile-first machine learning examples using p5.js
 
 ---
 
-## 📖 Learning Path
+## Learning Path
 
 ### Beginner Track
 1. **Start:** [wednesday_29th](wednesday_29th/) - Learn camera setup and basic ML5 models
@@ -124,7 +124,7 @@ A comprehensive collection of mobile-first machine learning examples using p5.js
 
 ---
 
-## 🎯 Key Concepts
+## Key Concepts
 
 ### Camera Management (p5-phone)
 ```javascript
@@ -196,7 +196,7 @@ if (activeTimer > 0) {
 
 ---
 
-## 💡 Common Use Cases
+## Common Use Cases
 
 ### Gesture Recognition
 - Head nods/shakes (FaceMesh velocity history)
@@ -220,7 +220,7 @@ if (activeTimer > 0) {
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Local Development
 ```bash
@@ -245,7 +245,7 @@ npx http-server
 
 ---
 
-## 📱 Mobile Optimization
+## Mobile Optimization
 
 All examples optimized for mobile:
 - **Canvas:** 405×720 (9:16 portrait)
@@ -256,7 +256,7 @@ All examples optimized for mobile:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 These examples are designed for educational purposes. Feel free to:
 - Fork and experiment
@@ -266,13 +266,13 @@ These examples are designed for educational purposes. Feel free to:
 
 ---
 
-## 📄 License
+## License
 
 Educational examples for mobile machine learning workshop.
 
 ---
 
-## 🔗 Quick Links
+## Quick Links
 
 ### Documentation
 - [p5.js Reference](https://p5js.org/reference/)
