@@ -1,6 +1,6 @@
 # Friday 7th - Character Controller Templates
 
-**Live Demo Index:** https://npuckett.github.io/exampleFix/friday_7th/
+**Live Demo Index:** https://npuckett.github.io/mlphone/friday_7th/
 
 A focused collection demonstrating the fundamental pattern of **parameter-driven character control** - how raw inputs become parameters, and how those parameters drive movement and animation.
 
