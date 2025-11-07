@@ -6,7 +6,7 @@
 ## Live Demos
 
 - **[Wednesday 29th - ML5 Camera Basics](https://npuckett.github.io/mlphone/wednesday_29th/)** - Foundation examples
-- **[Friday - ML5 + p5play Integration](https://npuckett.github.io/mlphone/friday/)** - Advanced tracking & sprites
+- **[Friday 31st - ML5 + p5play Integration](https://npuckett.github.io/mlphone/friday_31st/)** - Advanced tracking & sprites
 - **[Wednesday 5th - Character Animation](https://npuckett.github.io/mlphone/wednesday_5th/)** - Progressive animation examples
 - **[Friday 7th - Character Controller Templates](https://npuckett.github.io/mlphone/friday_7th/)** - Parameter-driven character control
 
@@ -15,7 +15,7 @@
 ## Documentation
 
 - **[Wednesday 29th README](wednesday_29th/README.md)** - ML5 camera setup and basic tracking
-- **[Friday README](friday/README.md)** - Advanced tracking methods and p5play integration
+- **[Friday 31st README](friday_31st/README.md)** - Advanced tracking methods and p5play integration
 - **[Wednesday 5th README](wednesday_5th/README.md)** - Character animation progression
 - **[Friday 7th README](friday_7th/README.md)** - Parameter-driven character controller templates
 
@@ -37,37 +37,37 @@
 
 ---
 
-### friday/ - ML5 + p5play Integration
+### friday_31st/ - ML5 + p5play Integration
 **Advanced tracking methods and sprite-based interactions**
 
 #### 01 - Tracking Data Methods (Simple)
 | Example | Description | Live Demo |
 |---------|-------------|-----------|
-| `PHONE_BodyPose_two_points` | Two-variable method for body tracking | [Demo](https://npuckett.github.io/mlphone/friday/01_trackingDataMethods-simple/PHONE_BodyPose_two_points/) |
-| `PHONE_FaceMesh_two_points` | Two-variable method for face tracking | [Demo](https://npuckett.github.io/mlphone/friday/01_trackingDataMethods-simple/PHONE_FaceMesh_two_points/) |
-| `PHONE_HandPose_two_points` | Two-variable method for hand tracking | [Demo](https://npuckett.github.io/mlphone/friday/01_trackingDataMethods-simple/PHONE_HandPose_two_points/) |
-| `THREE_BodyPose_two_points` | THREE.js version with body tracking | [Demo](https://npuckett.github.io/mlphone/friday/01_trackingDataMethods-simple/THREE_BodyPose_two_points/) |
-| `THREE_FaceMesh_two_points` | THREE.js version with face tracking | [Demo](https://npuckett.github.io/mlphone/friday/01_trackingDataMethods-simple/THREE_FaceMesh_two_points/) |
-| `THREE_HandPose_two_points` | THREE.js version with hand tracking | [Demo](https://npuckett.github.io/mlphone/friday/01_trackingDataMethods-simple/THREE_HandPose_two_points/) |
+| `PHONE_BodyPose_two_points` | Two-variable method for body tracking | [Demo](https://npuckett.github.io/mlphone/friday_31st/01_trackingDataMethods-simple/PHONE_BodyPose_two_points/) |
+| `PHONE_FaceMesh_two_points` | Two-variable method for face tracking | [Demo](https://npuckett.github.io/mlphone/friday_31st/01_trackingDataMethods-simple/PHONE_FaceMesh_two_points/) |
+| `PHONE_HandPose_two_points` | Two-variable method for hand tracking | [Demo](https://npuckett.github.io/mlphone/friday_31st/01_trackingDataMethods-simple/PHONE_HandPose_two_points/) |
+| `THREE_BodyPose_two_points` | THREE.js version with body tracking | [Demo](https://npuckett.github.io/mlphone/friday_31st/01_trackingDataMethods-simple/THREE_BodyPose_two_points/) |
+| `THREE_FaceMesh_two_points` | THREE.js version with face tracking | [Demo](https://npuckett.github.io/mlphone/friday_31st/01_trackingDataMethods-simple/THREE_FaceMesh_two_points/) |
+| `THREE_HandPose_two_points` | THREE.js version with hand tracking | [Demo](https://npuckett.github.io/mlphone/friday_31st/01_trackingDataMethods-simple/THREE_HandPose_two_points/) |
 
 #### 02 - Tracking Data (Advanced)
 | Example | Description | Live Demo |
 |---------|-------------|-----------|
-| `PHONE_FaceMesh_gaze_detection` | 3D gaze tracking from face orientation | [Demo](https://npuckett.github.io/mlphone/friday/02_trackingData-adv/PHONE_FaceMesh_gaze_detection/) |
-| `PHONE_FaceMesh_gesture_detection` | Head gesture recognition from velocity | [Demo](https://npuckett.github.io/mlphone/friday/02_trackingData-adv/PHONE_FaceMesh_gesture_detection/) |
+| `PHONE_FaceMesh_gaze_detection` | 3D gaze tracking from face orientation | [Demo](https://npuckett.github.io/mlphone/friday_31st/02_trackingData-adv/PHONE_FaceMesh_gaze_detection/) |
+| `PHONE_FaceMesh_gesture_detection` | Head gesture recognition from velocity | [Demo](https://npuckett.github.io/mlphone/friday_31st/02_trackingData-adv/PHONE_FaceMesh_gesture_detection/) |
 
 #### 03 - p5play Basics
 | Example | Description | Live Demo |
 |---------|-------------|-----------|
-| `p5play_01_basic_chase` | Sprite chasing with basic physics | [Demo](https://npuckett.github.io/mlphone/friday/03_p5Play/p5play_01_basic_chase/) |
-| `p5play_03_bouncing_ball` | Bouncing ball with collision | [Demo](https://npuckett.github.io/mlphone/friday/03_p5Play/p5play_03_bouncing_ball/) |
+| `p5play_01_basic_chase` | Sprite chasing with basic physics | [Demo](https://npuckett.github.io/mlphone/friday_31st/03_p5Play/p5play_01_basic_chase/) |
+| `p5play_03_bouncing_ball` | Bouncing ball with collision | [Demo](https://npuckett.github.io/mlphone/friday_31st/03_p5Play/p5play_03_bouncing_ball/) |
 
 #### 04 - ML5 + p5play Integration
 | Example | Description | Live Demo |
 |---------|-------------|-----------|
-| `p5play_02_handpose_chase` | Hand-controlled sprite chasing | [Demo](https://npuckett.github.io/mlphone/friday/04_ml5_p5play/p5play_02_handpose_chase/) |
-| `p5play_04_handpose_ball` | Hand-controlled bouncing ball | [Demo](https://npuckett.github.io/mlphone/friday/04_ml5_p5play/p5play_04_handpose_ball/) |
-| `p5play_05_gaze_sprites` | Gaze-controlled sprite interaction | [Demo](https://npuckett.github.io/mlphone/friday/04_ml5_p5play/p5play_05_gaze_sprites/) |
+| `p5play_02_handpose_chase` | Hand-controlled sprite chasing | [Demo](https://npuckett.github.io/mlphone/friday_31st/04_ml5_p5play/p5play_02_handpose_chase/) |
+| `p5play_04_handpose_ball` | Hand-controlled bouncing ball | [Demo](https://npuckett.github.io/mlphone/friday_31st/04_ml5_p5play/p5play_04_handpose_ball/) |
+| `p5play_05_gaze_sprites` | Gaze-controlled sprite interaction | [Demo](https://npuckett.github.io/mlphone/friday_31st/04_ml5_p5play/p5play_05_gaze_sprites/) |
 
 **Key Topics:** Two-variable tracking pattern, distance/angle/velocity measurement, gaze detection, gesture recognition, ML5-to-sprite integration
 
@@ -202,9 +202,9 @@ if (activeTimer > 0) {
 
 ### Example Collections
 - [Wednesday 29th](https://npuckett.github.io/mlphone/wednesday_29th/) - Camera basics
-- [Friday](https://npuckett.github.io/mlphone/friday/) - Advanced tracking
+- [Friday 31st](https://npuckett.github.io/mlphone/friday_31st/) - Advanced tracking
 - [Wednesday 5th](https://npuckett.github.io/mlphone/wednesday_5th/) - Character animation
-- [Friday 7th](https://npuckett.github.io/exampleFix/friday_7th/) - Character controller templates
+- [Friday 7th](https://npuckett.github.io/mlphone/friday_7th/) - Character controller templates
 
 ---
 

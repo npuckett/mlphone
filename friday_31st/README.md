@@ -1,6 +1,6 @@
-# Friday Examples - ML5 + p5play
+# Friday 31st Examples - ML5 + p5play
 
-**Live Demo:** [https://npuckett.github.io/mlphone/friday/](https://npuckett.github.io/mlphone/friday/)
+**Live Demo:** [https://npuckett.github.io/mlphone/friday_31st/](https://npuckett.github.io/mlphone/friday_31st/)
 
 ---
 

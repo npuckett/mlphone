@@ -591,7 +591,7 @@ After mastering these basics:
 - Implement gesture recognition
 - Create interactive responses to detected poses
 
-See **friday/** folder for advanced tracking examples and **wednesday_5th/** for character animation integration.
+See **friday_31st/** folder for advanced tracking examples and **wednesday_5th/** for character animation integration.
 
 ---
 

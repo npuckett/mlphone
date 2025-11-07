@@ -874,7 +874,7 @@ friday_7th/
 
 ## Related Examples
 
-- **[Friday - ML5 + p5play Integration](../friday/)** - Advanced tracking and sprite interactions
+- **[Friday 31st - ML5 + p5play Integration](../friday_31st/)** - Advanced tracking and sprite interactions
 - **[Wednesday 5th - Progressive Character Animation](../wednesday_5th/)** - Builds from basic to complex systems
 - **[Wednesday 29th - ML5 Basics](../wednesday_29th/)** - Foundation camera and tracking setup
 
