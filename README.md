@@ -9,6 +9,7 @@ A comprehensive collection of mobile-first machine learning examples using p5.js
 - **[Wednesday 29th - ML5 Camera Basics](https://npuckett.github.io/mlphone/wednesday_29th/)** - Foundation examples
 - **[Friday - ML5 + p5play Integration](https://npuckett.github.io/mlphone/friday/)** - Advanced tracking & sprites
 - **[Wednesday 5th - Character Animation](https://npuckett.github.io/mlphone/wednesday_5th/)** - Progressive animation examples
+- **[Friday 7th - Character Controller Templates](https://npuckett.github.io/exampleFix/friday_7th/)** - Parameter-driven character control
 
 ---
 
@@ -17,6 +18,7 @@ A comprehensive collection of mobile-first machine learning examples using p5.js
 - **[Wednesday 29th README](wednesday_29th/README.md)** - ML5 camera setup and basic tracking
 - **[Friday README](friday/README.md)** - Advanced tracking methods and p5play integration
 - **[Wednesday 5th README](wednesday_5th/README.md)** - Character animation progression
+- **[Friday 7th README](friday_7th/README.md)** - Parameter-driven character controller templates
 
 ---
 
@@ -88,6 +90,22 @@ A comprehensive collection of mobile-first machine learning examples using p5.js
 
 ---
 
+### friday_7th/ - Character Controller Templates
+**Parameter-driven character control demonstrating input → parameter → output pattern**
+
+| Example | Description | Live Demo |
+|---------|-------------|-----------|
+| `00_template_simple` | Minimal template with basic pattern | [Demo](https://npuckett.github.io/exampleFix/friday_7th/characterController/00_template_simple/) |
+| `01_parameter_health` | Resource decay system (positive input) | [Demo](https://npuckett.github.io/exampleFix/friday_7th/characterController/01_parameter_health/) |
+| `02_parameter_momentum` | Physics-based accumulation | [Demo](https://npuckett.github.io/exampleFix/friday_7th/characterController/02_parameter_momentum/) |
+| `03_parameter_stress` | Negative feedback (clicks increase stress) | [Demo](https://npuckett.github.io/exampleFix/friday_7th/characterController/03_parameter_stress/) |
+| `04_parameter_stress_collision` | Autonomous AI with collision detection | [Demo](https://npuckett.github.io/exampleFix/friday_7th/characterController/04_parameter_stress_collision/) |
+| `05_parameter_stress_shake` | Device sensor input (shake detection) | [Demo](https://npuckett.github.io/exampleFix/friday_7th/characterController/05_parameter_stress_shake/) |
+
+**Key Topics:** Parameter-driven control, resource systems, momentum/physics, negative feedback, autonomous AI, device sensors, emergent behavior
+
+---
+
 ## Technologies
 
 ### Core Libraries
@@ -121,6 +139,11 @@ A comprehensive collection of mobile-first machine learning examples using p5.js
 1. **Start:** [friday/03_p5Play](friday/03_p5Play/) - Learn p5play sprite basics
 2. **Progress:** [friday/04_ml5_p5play](friday/04_ml5_p5play/) - Connect ML5 tracking to sprites
 3. **Master:** [wednesday_5th](wednesday_5th/) - Build complex character AI with sensors
+
+### Character Control Track
+1. **Start:** [friday_7th/00_template_simple](friday_7th/characterController/00_template_simple/) - Learn parameter-driven pattern
+2. **Practice:** [friday_7th/01-03](friday_7th/) - Explore different parameter types (health, momentum, stress)
+3. **Advanced:** [friday_7th/04-05](friday_7th/) - Autonomous AI and device sensor integration
 
 ---
 
@@ -284,6 +307,7 @@ Educational examples for mobile machine learning workshop.
 - [Wednesday 29th](https://npuckett.github.io/mlphone/wednesday_29th/) - Camera basics
 - [Friday](https://npuckett.github.io/mlphone/friday/) - Advanced tracking
 - [Wednesday 5th](https://npuckett.github.io/mlphone/wednesday_5th/) - Character animation
+- [Friday 7th](https://npuckett.github.io/exampleFix/friday_7th/) - Character controller templates
 
 ---
 

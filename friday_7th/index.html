@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friday 7th - Character Controller Templates</title>
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Courier New', monospace;
+      background-color: white;
+      color: black;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      font-size: 24px;
+      margin-bottom: 30px;
+      border-bottom: 2px solid black;
+      padding-bottom: 10px;
+    }
+    
+    h2 {
+      font-size: 18px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    
+    .project {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .project:last-child {
+      border-bottom: none;
+    }
+    
+    .project-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .link-container {
+      margin-bottom: 10px;
+    }
+    
+    a {
+      color: black;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+    
+    a:hover {
+      background-color: black;
+      color: white;
+    }
+    
+    .qr-code {
+      margin-top: 10px;
+      image-rendering: pixelated;
+    }
+    
+    .qr-code img {
+      width: 150px;
+      height: 150px;
+      border: 2px solid black;
+    }
+  </style>
+  
+  <!-- QR Code Generator Library -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+  <h1>Friday 7th - Character Controller Templates</h1>
+  
+  <div style="margin: 20px 0; padding: 20px; border: 2px solid black; background-color: #f5f5f5;">
+    <h2 style="margin-top: 0;">Core Concept: Input → Parameter → Output</h2>
+    <pre style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+RAW INPUT (click/touch/shake)
+         ↓
+    PARAMETER (health, momentum, stress)
+         ← influenced by environmental forces
+         ← has inertia and state
+         ↓
+    OUTPUTS (speed, animation, visuals)
+    </pre>
+    <p style="margin-bottom: 0;">
+      Instead of directly controlling a character, use an intermediate 
+      <strong>parameter</strong> that responds to inputs AND environmental forces. 
+      This creates organic, game-like behavior with emergent properties.
+    </p>
+  </div>
+  
+  <h2>Character Controller Template</h2>
+  
+  <div class="project">
+    <div class="project-title">00_template_simple</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/exampleFix/friday_7th/characterController/00_template_simple/" target="_blank">
+        https://npuckett.github.io/exampleFix/friday_7th/characterController/00_template_simple/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-00-template"></div>
+  </div>
+  
+  <h2>Example Implementations</h2>
+  
+  <div class="project">
+    <div class="project-title">01_parameter_health</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/exampleFix/friday_7th/characterController/01_parameter_health/" target="_blank">
+        https://npuckett.github.io/exampleFix/friday_7th/characterController/01_parameter_health/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-01-health"></div>
+  </div>
+  
+  <div class="project">
+    <div class="project-title">02_parameter_momentum</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/exampleFix/friday_7th/characterController/02_parameter_momentum/" target="_blank">
+        https://npuckett.github.io/exampleFix/friday_7th/characterController/02_parameter_momentum/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-02-momentum"></div>
+  </div>
+  
+  <div class="project">
+    <div class="project-title">03_parameter_stress</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/exampleFix/friday_7th/characterController/03_parameter_stress/" target="_blank">
+        https://npuckett.github.io/exampleFix/friday_7th/characterController/03_parameter_stress/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-03-stress"></div>
+  </div>
+  
+  <div class="project">
+    <div class="project-title">04_parameter_stress_collision</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/exampleFix/friday_7th/characterController/04_parameter_stress_collision/" target="_blank">
+        https://npuckett.github.io/exampleFix/friday_7th/characterController/04_parameter_stress_collision/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-04-collision"></div>
+  </div>
+  
+  <div class="project">
+    <div class="project-title">05_parameter_stress_shake</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/exampleFix/friday_7th/characterController/05_parameter_stress_shake/" target="_blank">
+        https://npuckett.github.io/exampleFix/friday_7th/characterController/05_parameter_stress_shake/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-05-shake"></div>
+  </div>
+
+  <script>
+    // Generate QR codes for all projects
+    const projects = [
+      { id: 'qr-00-template', url: 'https://npuckett.github.io/exampleFix/friday_7th/characterController/00_template_simple/' },
+      { id: 'qr-01-health', url: 'https://npuckett.github.io/exampleFix/friday_7th/characterController/01_parameter_health/' },
+      { id: 'qr-02-momentum', url: 'https://npuckett.github.io/exampleFix/friday_7th/characterController/02_parameter_momentum/' },
+      { id: 'qr-03-stress', url: 'https://npuckett.github.io/exampleFix/friday_7th/characterController/03_parameter_stress/' },
+      { id: 'qr-04-collision', url: 'https://npuckett.github.io/exampleFix/friday_7th/characterController/04_parameter_stress_collision/' },
+      { id: 'qr-05-shake', url: 'https://npuckett.github.io/exampleFix/friday_7th/characterController/05_parameter_stress_shake/' }
+    ];
+    
+    projects.forEach(project => {
+      new QRCode(document.getElementById(project.id), {
+        text: project.url,
+        width: 150,
+        height: 150
+      });
+    });
+  </script>
+</body>
+</html>
