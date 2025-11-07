@@ -46,7 +46,8 @@ class StressCharacter {
   constructor(x, y, index) {
     // Sprite reference
     this.sprite = new Sprite(x, y);
-    this.sprite.scale = 0.15;
+    this.baseScale = random(0.1, 0.2);  // Vary character sizes
+    this.sprite.scale = this.baseScale;
     this.sprite.physics = 'kinematic';
     this.sprite.collider = 'none';
     
@@ -59,16 +60,30 @@ class StressCharacter {
     this.index = index;
     this.name = `Char ${index + 1}`;
     
-    // RANDOMIZED PERSONALITY TRAITS
+    // PERSONALITY ARCHETYPE SYSTEM
+    // Randomly assign one of several archetypes for more distinct behavior
+    const archetypes = [
+      { name: 'Calm', stressMod: 0.3, recoveryMod: 2.5, speedMod: 0.7, jitterMod: 0.3 },
+      { name: 'Anxious', stressMod: 2.5, recoveryMod: 0.4, speedMod: 1.5, jitterMod: 2.5 },
+      { name: 'Hyper', stressMod: 1.0, recoveryMod: 1.5, speedMod: 3.0, jitterMod: 1.5 },
+      { name: 'Sluggish', stressMod: 0.5, recoveryMod: 0.8, speedMod: 0.4, jitterMod: 0.5 },
+      { name: 'Volatile', stressMod: 1.8, recoveryMod: 0.3, speedMod: 1.2, jitterMod: 3.5 },
+      { name: 'Stoic', stressMod: 0.4, recoveryMod: 1.8, speedMod: 0.9, jitterMod: 0.2 },
+      { name: 'Erratic', stressMod: 1.5, recoveryMod: 1.0, speedMod: 2.0, jitterMod: 2.0 },
+      { name: 'Balanced', stressMod: 1.0, recoveryMod: 1.0, speedMod: 1.0, jitterMod: 1.0 }
+    ];
+    this.archetype = random(archetypes);
+    
+    // RANDOMIZED PERSONALITY TRAITS (influenced by archetype)
     // These define how each character responds to stress
-    this.stressSensitivity = random(3, 12);      // How much stress per shake (3-12)
-    this.stressRecovery = random(0.08, 0.25);    // Recovery rate (0.08-0.25)
-    this.baseSpeed = random(1.5, 3.5);           // Movement speed (1.5-3.5)
-    this.warningThreshold = random(30, 50);      // When jitter starts (30-50)
-    this.panicThreshold = random(60, 85);        // When extreme jitter starts (60-85)
-    this.jitterMultiplier = random(0.5, 1.5);    // How much they jitter (0.5-1.5x)
-    this.speedStressMultiplier = random(1.2, 2.0); // Speed increase when stressed
-    this.colorShift = random(0.8, 1.2);          // Color intensity variation
+    this.stressSensitivity = random(2, 20) * this.archetype.stressMod;      // How much stress per shake
+    this.stressRecovery = random(0.05, 0.5) * this.archetype.recoveryMod;   // Recovery rate
+    this.baseSpeed = random(0.8, 5.0) * this.archetype.speedMod;            // Movement speed
+    this.warningThreshold = random(15, 60);      // When jitter starts (15-60) - Some are very sensitive
+    this.panicThreshold = random(50, 90);        // When extreme jitter starts (50-90)
+    this.jitterMultiplier = random(0.2, 3.0) * this.archetype.jitterMod;    // How much they jitter
+    this.speedStressMultiplier = random(1.0, 3.5); // Speed increase when stressed (1.0-3.5x) - Some don't speed up, others go crazy
+    this.colorShift = random(0.5, 1.5);          // Color intensity variation
     
     // STRESS PARAMETER (individual to each character)
     this.stress = 0;  // Current stress level (0-100)
@@ -80,7 +95,8 @@ class StressCharacter {
     this.targetX = random(60, width - 60);
     this.targetY = random(80, height - 80);
     this.wanderTimer = random(0, 120);  // Stagger wander timing
-    this.wanderInterval = random(90, 180);  // Varied wander frequency
+    this.wanderInterval = random(60, 300);  // Much more varied wander frequency (1-5 seconds)
+    this.wanderRange = random(50, 200);     // How far they wander from current position
     
     // Visual effects
     this.jitterX = 0;
@@ -96,6 +112,7 @@ class StressCharacter {
     this.updateColor();
     this.updateJitter();
     this.updateSpeed();
+    this.updateScale();  // Add scale variation based on stress
     this.move();
   }
   
@@ -130,9 +147,16 @@ class StressCharacter {
   }
   
   chooseNewTarget() {
-    // Pick random point on screen (with margins)
-    this.targetX = random(60, width - 60);
-    this.targetY = random(80, height - 80);
+    // Pick random point based on wander range (some explore more, some stay local)
+    let angle = random(TWO_PI);
+    let distance = random(this.wanderRange * 0.5, this.wanderRange);
+    
+    this.targetX = this.sprite.x + cos(angle) * distance;
+    this.targetY = this.sprite.y + sin(angle) * distance;
+    
+    // Keep within bounds with margin
+    this.targetX = constrain(this.targetX, 60, width - 60);
+    this.targetY = constrain(this.targetY, 80, height - 80);
   }
   
   // ==============================================
@@ -182,6 +206,26 @@ class StressCharacter {
     } else {
       // Calm - normal speed
       this.currentSpeed = this.baseSpeed;
+    }
+  }
+  
+  // ==============================================
+  // VISUAL OUTPUT: Scale (stressed characters change size)
+  // ==============================================
+  updateScale() {
+    // Some characters grow when stressed, others shrink
+    let scaleChange = map(this.displayStress, 0, 100, 0, 0.05);
+    
+    // Archetype determines if they grow or shrink under stress
+    if (this.archetype.name === 'Volatile' || this.archetype.name === 'Anxious') {
+      // These characters shrink when stressed
+      this.sprite.scale = this.baseScale * (1 - scaleChange);
+    } else if (this.archetype.name === 'Hyper' || this.archetype.name === 'Erratic') {
+      // These characters grow when stressed
+      this.sprite.scale = this.baseScale * (1 + scaleChange);
+    } else {
+      // Others stay the same size
+      this.sprite.scale = this.baseScale;
     }
   }
   
@@ -445,7 +489,7 @@ function drawUI() {
   fill(255, 200, 0);
   textAlign(LEFT, TOP);
   textSize(16);
-  text(`⚡ ${selectedCharacter.name.toUpperCase()}`, x, y);
+  text(`⚡ ${selectedCharacter.name.toUpperCase()} - ${selectedCharacter.archetype.name.toUpperCase()}`, x, y);
   y += lineHeight * 1.5;
   
   // Personality Traits

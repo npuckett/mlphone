@@ -63,18 +63,18 @@
     
     .qr-code {
       margin-top: 10px;
-      image-rendering: pixelated;
+      padding: 10px;
+      background-color: white;
+      display: inline-block;
     }
     
-    .qr-code img {
-      width: 150px;
-      height: 150px;
-      border: 2px solid black;
+    .qr-code canvas {
+      display: block;
     }
   </style>
   
-  <!-- QR Code Generator Library -->
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <!-- QR Code Generator Library - using davidshimjs version for better quality -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
   <h1>Friday 7th - Character Controller Templates</h1>
@@ -102,8 +102,8 @@ RAW INPUT (click/touch/shake)
   <div class="project">
     <div class="project-title">00_template_simple</div>
     <div class="link-container">
-      <a href="https://npuckett.github.io/exampleFix/friday_7th/characterController/00_template_simple/" target="_blank">
-        https://npuckett.github.io/exampleFix/friday_7th/characterController/00_template_simple/
+      <a href="https://npuckett.github.io/mlphone/friday_7th/characterController/00_template_simple/" target="_blank">
+        https://npuckett.github.io/mlphone/friday_7th/characterController/00_template_simple/
       </a>
     </div>
     <div class="qr-code" id="qr-00-template"></div>
@@ -114,8 +114,8 @@ RAW INPUT (click/touch/shake)
   <div class="project">
     <div class="project-title">01_parameter_health</div>
     <div class="link-container">
-      <a href="https://npuckett.github.io/exampleFix/friday_7th/characterController/01_parameter_health/" target="_blank">
-        https://npuckett.github.io/exampleFix/friday_7th/characterController/01_parameter_health/
+      <a href="https://npuckett.github.io/mlphone/friday_7th/characterController/01_parameter_health/" target="_blank">
+        https://npuckett.github.io/mlphone/friday_7th/characterController/01_parameter_health/
       </a>
     </div>
     <div class="qr-code" id="qr-01-health"></div>
@@ -124,8 +124,8 @@ RAW INPUT (click/touch/shake)
   <div class="project">
     <div class="project-title">02_parameter_momentum</div>
     <div class="link-container">
-      <a href="https://npuckett.github.io/exampleFix/friday_7th/characterController/02_parameter_momentum/" target="_blank">
-        https://npuckett.github.io/exampleFix/friday_7th/characterController/02_parameter_momentum/
+      <a href="https://npuckett.github.io/mlphone/friday_7th/characterController/02_parameter_momentum/" target="_blank">
+        https://npuckett.github.io/mlphone/friday_7th/characterController/02_parameter_momentum/
       </a>
     </div>
     <div class="qr-code" id="qr-02-momentum"></div>
@@ -134,8 +134,8 @@ RAW INPUT (click/touch/shake)
   <div class="project">
     <div class="project-title">03_parameter_stress</div>
     <div class="link-container">
-      <a href="https://npuckett.github.io/exampleFix/friday_7th/characterController/03_parameter_stress/" target="_blank">
-        https://npuckett.github.io/exampleFix/friday_7th/characterController/03_parameter_stress/
+      <a href="https://npuckett.github.io/mlphone/friday_7th/characterController/03_parameter_stress/" target="_blank">
+        https://npuckett.github.io/mlphone/friday_7th/characterController/03_parameter_stress/
       </a>
     </div>
     <div class="qr-code" id="qr-03-stress"></div>
@@ -144,8 +144,8 @@ RAW INPUT (click/touch/shake)
   <div class="project">
     <div class="project-title">04_parameter_stress_collision</div>
     <div class="link-container">
-      <a href="https://npuckett.github.io/exampleFix/friday_7th/characterController/04_parameter_stress_collision/" target="_blank">
-        https://npuckett.github.io/exampleFix/friday_7th/characterController/04_parameter_stress_collision/
+      <a href="https://npuckett.github.io/mlphone/friday_7th/characterController/04_parameter_stress_collision/" target="_blank">
+        https://npuckett.github.io/mlphone/friday_7th/characterController/04_parameter_stress_collision/
       </a>
     </div>
     <div class="qr-code" id="qr-04-collision"></div>
@@ -154,8 +154,8 @@ RAW INPUT (click/touch/shake)
   <div class="project">
     <div class="project-title">05_parameter_stress_shake</div>
     <div class="link-container">
-      <a href="https://npuckett.github.io/exampleFix/friday_7th/characterController/05_parameter_stress_shake/" target="_blank">
-        https://npuckett.github.io/exampleFix/friday_7th/characterController/05_parameter_stress_shake/
+      <a href="https://npuckett.github.io/mlphone/friday_7th/characterController/05_parameter_stress_shake/" target="_blank">
+        https://npuckett.github.io/mlphone/friday_7th/characterController/05_parameter_stress_shake/
       </a>
     </div>
     <div class="qr-code" id="qr-05-shake"></div>
@@ -164,8 +164,8 @@ RAW INPUT (click/touch/shake)
   <div class="project">
     <div class="project-title">06_multi_character_class</div>
     <div class="link-container">
-      <a href="https://npuckett.github.io/exampleFix/friday_7th/characterController/06_multi_character_class/" target="_blank">
-        https://npuckett.github.io/exampleFix/friday_7th/characterController/06_multi_character_class/
+      <a href="https://npuckett.github.io/mlphone/friday_7th/characterController/06_multi_character_class/" target="_blank">
+        https://npuckett.github.io/mlphone/friday_7th/characterController/06_multi_character_class/
       </a>
     </div>
     <div class="qr-code" id="qr-06-multichar"></div>
@@ -174,20 +174,24 @@ RAW INPUT (click/touch/shake)
   <script>
     // Generate QR codes for all projects
     const projects = [
-      { id: 'qr-00-template', url: 'https://npuckett.github.io/exampleFix/friday_7th/characterController/00_template_simple/' },
-      { id: 'qr-01-health', url: 'https://npuckett.github.io/exampleFix/friday_7th/characterController/01_parameter_health/' },
-      { id: 'qr-02-momentum', url: 'https://npuckett.github.io/exampleFix/friday_7th/characterController/02_parameter_momentum/' },
-      { id: 'qr-03-stress', url: 'https://npuckett.github.io/exampleFix/friday_7th/characterController/03_parameter_stress/' },
-      { id: 'qr-04-collision', url: 'https://npuckett.github.io/exampleFix/friday_7th/characterController/04_parameter_stress_collision/' },
-      { id: 'qr-05-shake', url: 'https://npuckett.github.io/exampleFix/friday_7th/characterController/05_parameter_stress_shake/' },
-      { id: 'qr-06-multichar', url: 'https://npuckett.github.io/exampleFix/friday_7th/characterController/06_multi_character_class/' }
+      { id: 'qr-00-template', url: 'https://npuckett.github.io/mlphone/friday_7th/characterController/00_template_simple/' },
+      { id: 'qr-01-health', url: 'https://npuckett.github.io/mlphone/friday_7th/characterController/01_parameter_health/' },
+      { id: 'qr-02-momentum', url: 'https://npuckett.github.io/mlphone/friday_7th/characterController/02_parameter_momentum/' },
+      { id: 'qr-03-stress', url: 'https://npuckett.github.io/mlphone/friday_7th/characterController/03_parameter_stress/' },
+      { id: 'qr-04-collision', url: 'https://npuckett.github.io/mlphone/friday_7th/characterController/04_parameter_stress_collision/' },
+      { id: 'qr-05-shake', url: 'https://npuckett.github.io/mlphone/friday_7th/characterController/05_parameter_stress_shake/' },
+      { id: 'qr-06-multichar', url: 'https://npuckett.github.io/mlphone/friday_7th/characterController/06_multi_character_class/' }
     ];
     
+    // Generate QR codes with optimized settings for scanning
     projects.forEach(project => {
       new QRCode(document.getElementById(project.id), {
         text: project.url,
-        width: 150,
-        height: 150
+        width: 200,           // Larger size for better scanning
+        height: 200,          // Larger size for better scanning
+        colorDark: "#000000", // Black
+        colorLight: "#ffffff", // White
+        correctLevel: QRCode.CorrectLevel.H  // High error correction for better scanning
       });
     });
   </script>
