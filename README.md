@@ -8,7 +8,7 @@
 - **[Wednesday 29th - ML5 Camera Basics](https://npuckett.github.io/mlphone/wednesday_29th/)** - Foundation examples
 - **[Friday - ML5 + p5play Integration](https://npuckett.github.io/mlphone/friday/)** - Advanced tracking & sprites
 - **[Wednesday 5th - Character Animation](https://npuckett.github.io/mlphone/wednesday_5th/)** - Progressive animation examples
-- **[Friday 7th - Character Controller Templates](https://npuckett.github.io/exampleFix/friday_7th/)** - Parameter-driven character control
+- **[Friday 7th - Character Controller Templates](https://npuckett.github.io/mlphone/friday_7th/)** - Parameter-driven character control
 
 ---
 
