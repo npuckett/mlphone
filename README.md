@@ -1,6 +1,5 @@
 # ML Phone - Mobile Machine Learning Examples
 
-A comprehensive collection of mobile-first machine learning examples using p5.js, ml5.js, p5play, and p5-phone. These examples demonstrate pose tracking, character animation, sensor integration, and interactive ML experiences optimized for mobile devices.
 
 ---
 
@@ -121,29 +120,6 @@ A comprehensive collection of mobile-first machine learning examples using p5.js
 - **HandPose** - 21 hand keypoints per hand, gesture recognition
 - **BodyPose** - 17 body keypoints (MoveNet), full-body tracking
 
----
-
-## Learning Path
-
-### Beginner Track
-1. **Start:** [wednesday_29th](wednesday_29th/) - Learn camera setup and basic ML5 models
-2. **Practice:** Try each model (FaceMesh, HandPose, BodyPose)
-3. **Experiment:** Modify keypoint visualization and thresholds
-
-### Intermediate Track
-1. **Start:** [friday/01_trackingDataMethods-simple](friday/01_trackingDataMethods-simple/) - Learn two-variable tracking pattern
-2. **Practice:** Calculate distances, angles, velocities between keypoints
-3. **Experiment:** [friday/02_trackingData-adv](friday/02_trackingData-adv/) - Implement gaze and gesture detection
-
-### Advanced Track
-1. **Start:** [friday/03_p5Play](friday/03_p5Play/) - Learn p5play sprite basics
-2. **Progress:** [friday/04_ml5_p5play](friday/04_ml5_p5play/) - Connect ML5 tracking to sprites
-3. **Master:** [wednesday_5th](wednesday_5th/) - Build complex character AI with sensors
-
-### Character Control Track
-1. **Start:** [friday_7th/00_template_simple](friday_7th/characterController/00_template_simple/) - Learn parameter-driven pattern
-2. **Practice:** [friday_7th/01-03](friday_7th/) - Explore different parameter types (health, momentum, stress)
-3. **Advanced:** [friday_7th/04-05](friday_7th/) - Autonomous AI and device sensor integration
 
 ---
 
@@ -217,85 +193,6 @@ if (activeTimer > 0) {
 }
 ```
 
----
-
-## Common Use Cases
-
-### Gesture Recognition
-- Head nods/shakes (FaceMesh velocity history)
-- Hand gestures (HandPose finger positions)
-- Body poses (BodyPose keypoint relationships)
-
-### Interactive Characters
-- Touch/gaze-controlled movement
-- Sensor-driven behaviors (tilt, sound, camera)
-- AI personality systems (tiredness, introversion)
-
-### Game Mechanics
-- Hand-controlled sprites
-- Body-controlled avatars
-- Gaze-based targeting
-
-### Creative Installations
-- Face-responsive visuals
-- Movement-triggered animations
-- Multi-modal interactions
-
----
-
-## Getting Started
-
-### Local Development
-```bash
-# Clone repository
-git clone https://github.com/npuckett/mlphone.git
-cd mlphone
-
-# Serve with local server (required for camera access)
-python -m http.server 8000
-# or
-npx http-server
-
-# Open in browser
-# Navigate to http://localhost:8000/wednesday_29th/
-```
-
-### Mobile Testing
-1. Ensure HTTPS (required for camera/sensors)
-2. Use GitHub Pages or similar hosting
-3. Scan QR codes from index pages for quick mobile access
-4. Test on actual device (DevTools emulation has limitations)
-
----
-
-## Mobile Optimization
-
-All examples optimized for mobile:
-- **Canvas:** 405×720 (9:16 portrait)
-- **Touch Controls:** Tap-based interactions
-- **Sensor Access:** Gyroscope, microphone, camera
-- **Performance:** 30-60 FPS on modern phones
-- **UI:** Large touch targets, clear feedback
-
----
-
-## Contributing
-
-These examples are designed for educational purposes. Feel free to:
-- Fork and experiment
-- Create variations
-- Submit improvements
-- Share your creations
-
----
-
-## License
-
-Educational examples for mobile machine learning workshop.
-
----
-
-## Quick Links
 
 ### Documentation
 - [p5.js Reference](https://p5js.org/reference/)
