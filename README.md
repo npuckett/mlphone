@@ -12,6 +12,90 @@
 
 ---
 
+## Examples by Type
+
+### Body Tracking (BodyPose)
+
+**Start here:** The two-points examples below are the recommended starting point for body tracking.
+
+| Example | Code | Description |
+|---------|------|-------------|
+| **BodyPose Two Points (p5.js)** | [Code](friday_31st/01_trackingDataMethods-simple/PHONE_BodyPose_two_points/) · [Demo](https://npuckett.github.io/mlphone/friday_31st/01_trackingDataMethods-simple/PHONE_BodyPose_two_points/) | **Recommended starting point.** Two-variable method for tracking shoulders, wrists, nose. Calculates distances and angles between keypoints. |
+| **BodyPose Two Points (THREE.js)** | [Code](friday_31st/01_trackingDataMethods-simple/THREE_BodyPose_two_points/) · [Demo](https://npuckett.github.io/mlphone/friday_31st/01_trackingDataMethods-simple/THREE_BodyPose_two_points/) | Same tracking logic using THREE.js 3D graphics instead of p5.js canvas. |
+
+---
+
+### Face Tracking (FaceMesh)
+
+**Start here:** The two-points example is the recommended starting point for face tracking. Build up to gaze and gesture detection.
+
+| Example | Code | Description |
+|---------|------|-------------|
+| **FaceMesh Two Points (p5.js)** | [Code](friday_31st/01_trackingDataMethods-simple/PHONE_FaceMesh_two_points/) · [Demo](https://npuckett.github.io/mlphone/friday_31st/01_trackingDataMethods-simple/PHONE_FaceMesh_two_points/) | **Recommended starting point.** Tracks eyes, lips, nose tip. Demonstrates facial measurement calculations using two-variable method. |
+| **FaceMesh Two Points (THREE.js)** | [Code](friday_31st/01_trackingDataMethods-simple/THREE_FaceMesh_two_points/) · [Demo](https://npuckett.github.io/mlphone/friday_31st/01_trackingDataMethods-simple/THREE_FaceMesh_two_points/) | THREE.js version of face tracking with 3D visualization capabilities. |
+| **Gaze Detection** | [Code](friday_31st/02_trackingData-adv/PHONE_FaceMesh_gaze_detection/) · [Demo](https://npuckett.github.io/mlphone/friday_31st/02_trackingData-adv/PHONE_FaceMesh_gaze_detection/) | Advanced: 3D gaze tracking using face orientation and eye direction. Calculates where user is looking on screen. |
+| **Gesture Detection** | [Code](friday_31st/02_trackingData-adv/PHONE_FaceMesh_gesture_detection/) · [Demo](https://npuckett.github.io/mlphone/friday_31st/02_trackingData-adv/PHONE_FaceMesh_gesture_detection/) | Advanced: Head gesture recognition (nod, shake) from velocity history and directional movement patterns. |
+| **Gaze Sprites (Character AI)** | [Code](wednesday_5th/p5Play/p5play_05_gaze_sprites/) · [Demo](https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_05_gaze_sprites/) | Application: Sprites that detect and flee from user's gaze. Combines FaceMesh gaze detection with sprite AI behaviors. |
+
+---
+
+### Hand Tracking (HandPose)
+
+**Start here:** The two-points example is the recommended starting point for hand tracking. Progress to sprite integration examples.
+
+| Example | Code | Description |
+|---------|------|-------------|
+| **HandPose Two Points (p5.js)** | [Code](friday_31st/01_trackingDataMethods-simple/PHONE_HandPose_two_points/) · [Demo](https://npuckett.github.io/mlphone/friday_31st/01_trackingDataMethods-simple/PHONE_HandPose_two_points/) | **Recommended starting point.** Tracks fingertips and wrist. Measures hand spread and finger positions using two-variable method. |
+| **HandPose Two Points (THREE.js)** | [Code](friday_31st/01_trackingDataMethods-simple/THREE_HandPose_two_points/) · [Demo](https://npuckett.github.io/mlphone/friday_31st/01_trackingDataMethods-simple/THREE_HandPose_two_points/) | THREE.js version with 3D hand tracking visualization. |
+| **HandPose Chase** | [Code](friday_31st/04_ml5_p5play/p5play_02_handpose_chase/) · [Demo](https://npuckett.github.io/mlphone/friday_31st/04_ml5_p5play/p5play_02_handpose_chase/) | Application: Sprite follows hand position. Demonstrates ML5 to p5play sprite control integration. |
+| **HandPose Ball** | [Code](friday_31st/04_ml5_p5play/p5play_04_handpose_ball/) · [Demo](https://npuckett.github.io/mlphone/friday_31st/04_ml5_p5play/p5play_04_handpose_ball/) | Application: Hand-controlled bouncing ball with physics. Maps hand movement to sprite velocity. |
+
+---
+
+### p5play Sprite Basics
+
+| Example | Code | Description |
+|---------|------|-------------|
+| **Basic Chase** | [Code](friday_31st/03_p5Play/p5play_01_basic_chase/) · [Demo](https://npuckett.github.io/mlphone/friday_31st/03_p5Play/p5play_01_basic_chase/) | Sprite chasing mechanics with basic physics. Introduction to p5play sprite movement and collision. |
+| **Bouncing Ball** | [Code](friday_31st/03_p5Play/p5play_03_bouncing_ball/) · [Demo](https://npuckett.github.io/mlphone/friday_31st/03_p5Play/p5play_03_bouncing_ball/) | Ball physics with wall collision detection. Demonstrates gravity, velocity, and restitution. |
+| **Gaze Sprites** | [Code](friday_31st/04_ml5_p5play/p5play_05_gaze_sprites/) · [Demo](https://npuckett.github.io/mlphone/friday_31st/04_ml5_p5play/p5play_05_gaze_sprites/) | Sprites interact based on gaze direction. Shows sprite-to-sprite awareness and avoidance behaviors. |
+
+---
+
+### Character Animation
+
+| Example | Code | Description |
+|---------|------|-------------|
+| **Animation Controls** | [Code](wednesday_5th/p5Play/p5play_00_animation_controls/) · [Demo](https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_00_animation_controls/) | Basic animation UI with buttons and sliders. Control animation playback, speed, and frame selection. |
+| **Simple Touch Movement** | [Code](wednesday_5th/p5Play/p5play_01_animated_character_phone_simple/) · [Demo](https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_01_animated_character_phone_simple/) | Touch-based character movement with walk/idle animations. Foundation for animated character control. |
+| **Tiredness System** | [Code](wednesday_5th/p5Play/p5play_02_animated_character_phone/) · [Demo](https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_02_animated_character_phone/) | Complete resource management with tiredness parameter. Movement drains energy, rest recovers it. State-based animation switching. |
+
+---
+
+### Device Sensor Integration
+
+| Example | Code | Description |
+|---------|------|-------------|
+| **Tilt Character** | [Code](wednesday_5th/p5Play/p5play_03_tilt_character/) · [Demo](https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_03_tilt_character/) | Gyroscope-controlled depth simulation. Device tilt controls character position with pseudo-3D parallax effect. |
+| **Sound Introversion** | [Code](wednesday_5th/p5Play/p5play_04_sound_introversion/) · [Demo](https://npuckett.github.io/mlphone/wednesday_5th/p5Play/p5play_04_sound_introversion/) | Microphone-driven introverted behavior. Loud environments cause character to hide; quiet environments encourage exploration. |
+| **Shake Detection** | [Code](friday_7th/characterController/05_parameter_stress_shake/) · [Demo](https://npuckett.github.io/mlphone/friday_7th/characterController/05_parameter_stress_shake/) | Device shake increases character stress. Demonstrates deviceShaken() event with parameter-driven visual responses. |
+
+---
+
+### Character Controller Templates (Input → Parameter → Output)
+
+| Example | Code | Description |
+|---------|------|-------------|
+| **Simple Template** | [Code](friday_7th/characterController/00_template_simple/) · [Demo](https://npuckett.github.io/mlphone/friday_7th/characterController/00_template_simple/) | Minimal template demonstrating the input → parameter → output pattern. Foundation for all controller examples. |
+| **Health Parameter** | [Code](friday_7th/characterController/01_parameter_health/) · [Demo](https://npuckett.github.io/mlphone/friday_7th/characterController/01_parameter_health/) | Resource decay system where clicks restore health. Shows positive feedback loop and visual state representation. |
+| **Momentum Parameter** | [Code](friday_7th/characterController/02_parameter_momentum/) · [Demo](https://npuckett.github.io/mlphone/friday_7th/characterController/02_parameter_momentum/) | Physics-based momentum accumulation. Clicks build speed with natural decay and inertia. |
+| **Stress Parameter** | [Code](friday_7th/characterController/03_parameter_stress/) · [Demo](https://npuckett.github.io/mlphone/friday_7th/characterController/03_parameter_stress/) | Negative feedback where clicks increase stress. Character becomes jittery and color-shifts under pressure. |
+| **Stress + Collision** | [Code](friday_7th/characterController/04_parameter_stress_collision/) · [Demo](https://npuckett.github.io/mlphone/friday_7th/characterController/04_parameter_stress_collision/) | Autonomous AI with collision-based stress. Character wanders; wall collisions increase stress causing behavioral changes. |
+| **Stress + Shake** | [Code](friday_7th/characterController/05_parameter_stress_shake/) · [Demo](https://npuckett.github.io/mlphone/friday_7th/characterController/05_parameter_stress_shake/) | Device shake sensor input affects stress parameter. Demonstrates mobile sensor integration with parameter systems. |
+| **Multi-Character Class** | [Code](friday_7th/characterController/06_multi_character_class/) · [Demo](https://npuckett.github.io/mlphone/friday_7th/characterController/06_multi_character_class/) | Object-oriented system with 10 characters, each with randomized personality traits (stress sensitivity, recovery rate, speed). Demonstrates class-based architecture and emergent behavior from varied parameters. |
+
+---
+
 ## Documentation
 
 - **[Wednesday 29th README](wednesday_29th/README.md)** - ML5 camera setup and basic tracking
