@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wednesday 19th - Classes & localStorage</title>
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Courier New', monospace;
+      background-color: white;
+      color: black;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      font-size: 24px;
+      margin-bottom: 30px;
+      border-bottom: 2px solid black;
+      padding-bottom: 10px;
+    }
+    
+    h2 {
+      font-size: 18px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    
+    .project {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .project:last-child {
+      border-bottom: none;
+    }
+    
+    .project-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .link-container {
+      margin-bottom: 10px;
+    }
+    
+    a {
+      color: black;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+    
+    a:hover {
+      background-color: black;
+      color: white;
+    }
+    
+    .qr-code {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: white;
+      display: inline-block;
+    }
+    
+    .qr-code canvas {
+      display: block;
+    }
+  </style>
+  
+  <!-- QR Code Generator Library - using davidshimjs version for better quality -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+  <h1>Wednesday 19th - Classes & localStorage</h1>
+  
+  <div style="margin: 20px 0; padding: 20px; border: 2px solid black; background-color: #f5f5f5;">
+    <h2 style="margin-top: 0;">Core Concepts</h2>
+    <pre style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+CLASSES: Organize related data and behavior
+         ↓
+    Encapsulation (hide complexity)
+    Reusability (use in multiple projects)
+    Maintainability (easier to modify)
+         ↓
+    Clean, professional code organization
+
+LOCALSTORAGE: Persist data between sessions
+         ↓
+    Save state (character health, stress, etc.)
+    Load state (restore previous session)
+    Clear state (reset to defaults)
+    </pre>
+    <p style="margin-bottom: 0;">
+      This session demonstrates <strong>object-oriented programming</strong> with classes
+      and <strong>data persistence</strong> with localStorage, showing how these concepts
+      simplify complex code and create more sophisticated interactions.
+    </p>
+  </div>
+  
+  <h2>localStorage Examples</h2>
+  
+  <div class="project">
+    <div class="project-title">01_localStorage_example</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_19th/localStorage/01_localStorage_example/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_19th/localStorage/01_localStorage_example/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-01-localstorage"></div>
+  </div>
+  
+  <div class="project">
+    <div class="project-title">02_stress_shake_persistent</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_19th/localStorage/02_stress_shake_persistent/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_19th/localStorage/02_stress_shake_persistent/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-02-stress-persistent"></div>
+  </div>
+  
+  <h2>Class Examples - Introduction to OOP</h2>
+  
+  <div class="project">
+    <div class="project-title">01_basic_circle_class</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_19th/classes/01_basic_circle_class/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_19th/classes/01_basic_circle_class/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-01-circle-class"></div>
+  </div>
+  
+  <div class="project">
+    <div class="project-title">02_basic_circle_functions</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_19th/classes/02_basic_circle_functions/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_19th/classes/02_basic_circle_functions/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-02-circle-functions"></div>
+  </div>
+  
+  <h2>Class Examples - Character Controllers</h2>
+  
+  <div class="project">
+    <div class="project-title">03_stress_character_class</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_19th/classes/03_stress_character_class/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_19th/classes/03_stress_character_class/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-03-stress-class"></div>
+  </div>
+  
+  <div class="project">
+    <div class="project-title">04_character_template_class</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_19th/classes/04_character_template_class/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_19th/classes/04_character_template_class/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-04-template-class"></div>
+  </div>
+  
+  <h2>Class Examples - ML5 Tracking Wrappers</h2>
+  
+  <div class="project">
+    <div class="project-title">05_bodypose_tracker_class</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_19th/classes/05_bodypose_tracker_class/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_19th/classes/05_bodypose_tracker_class/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-05-bodypose-class"></div>
+  </div>
+  
+  <div class="project">
+    <div class="project-title">06_gaze_detector_class</div>
+    <div class="link-container">
+      <a href="https://npuckett.github.io/mlphone/wednesday_19th/classes/06_gaze_detector_class/" target="_blank">
+        https://npuckett.github.io/mlphone/wednesday_19th/classes/06_gaze_detector_class/
+      </a>
+    </div>
+    <div class="qr-code" id="qr-06-gaze-class"></div>
+  </div>
+
+  <script>
+    // Generate QR codes for all projects
+    const projects = [
+      { id: 'qr-01-localstorage', url: 'https://npuckett.github.io/mlphone/wednesday_19th/localStorage/01_localStorage_example/' },
+      { id: 'qr-02-stress-persistent', url: 'https://npuckett.github.io/mlphone/wednesday_19th/localStorage/02_stress_shake_persistent/' },
+      { id: 'qr-01-circle-class', url: 'https://npuckett.github.io/mlphone/wednesday_19th/classes/01_basic_circle_class/' },
+      { id: 'qr-02-circle-functions', url: 'https://npuckett.github.io/mlphone/wednesday_19th/classes/02_basic_circle_functions/' },
+      { id: 'qr-03-stress-class', url: 'https://npuckett.github.io/mlphone/wednesday_19th/classes/03_stress_character_class/' },
+      { id: 'qr-04-template-class', url: 'https://npuckett.github.io/mlphone/wednesday_19th/classes/04_character_template_class/' },
+      { id: 'qr-05-bodypose-class', url: 'https://npuckett.github.io/mlphone/wednesday_19th/classes/05_bodypose_tracker_class/' },
+      { id: 'qr-06-gaze-class', url: 'https://npuckett.github.io/mlphone/wednesday_19th/classes/06_gaze_detector_class/' }
+    ];
+    
+    // Generate QR codes with optimized settings for scanning
+    projects.forEach(project => {
+      new QRCode(document.getElementById(project.id), {
+        text: project.url,
+        width: 200,           // Larger size for better scanning
+        height: 200,          // Larger size for better scanning
+        colorDark: "#000000", // Black
+        colorLight: "#ffffff", // White
+        correctLevel: QRCode.CorrectLevel.H  // High error correction for better scanning
+      });
+    });
+  </script>
+</body>
+</html>
