@@ -247,6 +247,9 @@ function setup() {
 }
 
 function draw() {
+  // .forEach() loops through the array
+  // The => is an "arrow function" - a shorter way to write a function
+  // For each circle in the array, we call it 'c' and run update() and display()
   circles.forEach(c => {
     c.update();
     c.display();
@@ -256,6 +259,32 @@ function draw() {
   circles = circles.filter(c => !c.isDead());
 }
 ```
+
+**Understanding Arrow Functions:**
+
+The `.forEach()` method with an arrow function `=>` is a modern, concise way to loop through arrays. Here's the same code written in different ways:
+
+```javascript
+// Modern way (using arrow function):
+circles.forEach(c => {
+  c.update();
+  c.display();
+});
+
+// Traditional way (using regular function):
+circles.forEach(function(c) {
+  c.update();
+  c.display();
+});
+
+// Classic way (using for loop):
+for (let i = 0; i < circles.length; i++) {
+  circles[i].update();
+  circles[i].display();
+}
+```
+
+All three versions do exactly the same thing - they loop through each circle and call its `update()` and `display()` methods. The arrow function syntax `=>` is just shorter and cleaner.
 
 **Purpose:**
 First exposure to classes. Circle class demonstrates constructor, properties, methods, and instance management.
