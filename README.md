@@ -1,15 +1,25 @@
-# ML Phone - Mobile Machine Learning Examples
+# ML Phone - Mobile Computer Vision and P5 Play
 
+
+---
+
+## Code Examples and Descriptions
+
+- **[Wednesday 29th](wednesday_29th/README.md)** - ML5 Camera Basics
+- **[Friday 31st](friday_31st/README.md)** - ML5 + p5play Integration
+- **[Wednesday 5th](wednesday_5th/README.md)** - Character Animation
+- **[Friday 7th](friday_7th/README.md)** - Character Controller Templates
+- **[Wednesday 19th](wednesday_19th/README.md)** - Classes & localStorage
 
 ---
 
 ## Live Demos
 
 - **[Wednesday 29th - ML5 Camera Basics](https://npuckett.github.io/mlphone/wednesday_29th/)** - Foundation examples
+- **[Friday 31st - ML5 + p5play Integration](https://npuckett.github.io/mlphone/friday_31st/)** - Advanced tracking & sprites
 - **[Wednesday 5th - Character Animation](https://npuckett.github.io/mlphone/wednesday_5th/)** - Progressive animation examples
 - **[Friday 7th - Character Controller Templates](https://npuckett.github.io/mlphone/friday_7th/)** - Parameter-driven character control
 - **[Wednesday 19th - Classes & localStorage](https://npuckett.github.io/mlphone/wednesday_19th/)** - Object-oriented programming & data persistence
-- **[Friday 31st - ML5 + p5play Integration](https://npuckett.github.io/mlphone/friday_31st/)** - Advanced tracking & sprites
 
 ---
 
