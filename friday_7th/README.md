@@ -31,7 +31,7 @@ This collection demonstrates a fundamental game development pattern that creates
 - **p5.js v1.11.4** - Required for p5play v3 compatibility
 - **p5play v3** - Sprite animation and movement system
 - **Planck.js v1.0.5** - Physics engine (p5play dependency)
-- **p5-phone v1.6.1** - Mobile touch support and device sensors
+- **p5-phone v1.6.2** - Mobile touch support and device sensors
 
 **Canvas:** All examples use 405×720 pixels (9:16 portrait aspect ratio) optimized for mobile screens.
 

@@ -42,7 +42,7 @@ LIBRARIES REQUIRED:
 - p5.js v1.11.4
 - p5.sound (required for p5.AudioIn)
 - p5play v3
-- p5-phone v1.6.1 (microphone management)
+- p5-phone v1.6.2 (microphone management)
 */
 
 // ==============================================

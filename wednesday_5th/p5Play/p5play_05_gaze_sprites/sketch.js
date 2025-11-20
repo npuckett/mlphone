@@ -71,7 +71,7 @@ LIBRARIES REQUIRED:
 - p5.js v1.11.4 (required for p5play v3 compatibility)
 - ml5.js v1.x (FaceMesh face tracking)
 - p5play v3 (sprite and collision system)
-- p5-phone v1.6.1 (camera management and coordinate mapping)
+- p5-phone v1.6.2 (camera management and coordinate mapping)
 */
 
 // ==============================================

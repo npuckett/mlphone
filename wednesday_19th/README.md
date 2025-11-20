@@ -38,7 +38,7 @@ This collection demonstrates two fundamental programming concepts that transform
 **Core Technologies:**
 - **p5.js v1.11.10** - Canvas graphics framework
 - **p5play v3** - Sprite animation system (character examples)
-- **p5-phone v1.6.1** - Mobile sensors and camera management
+- **p5-phone v1.6.2** - Mobile sensors and camera management
 - **ML5.js v1.x** - Machine learning models (BodyPose, FaceMesh)
 - **localStorage API** - Browser data persistence
 

@@ -28,7 +28,7 @@ This collection demonstrates a progression of increasingly sophisticated charact
 **Core Technologies:**
 - **p5.js v1.11.4** - Required for p5play v3 compatibility
 - **p5play v3** - Sprite animation and physics engine
-- **p5-phone v1.6.1** - Mobile sensors and camera management
+- **p5-phone v1.6.2** - Mobile sensors and camera management
 - **p5.sound** - Audio input (required for microphone examples)
 - **ml5.js v1.x** - Machine learning (FaceMesh for gaze tracking)
 
