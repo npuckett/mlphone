@@ -130,7 +130,7 @@
 - **[p5.js v1.11.4](https://p5js.org/)** - Creative coding framework
 - **[ml5.js v1.x](https://ml5js.org/)** - Machine learning library
 - **[p5play v3](https://p5play.org/)** - Sprite animation and physics
-- **[p5-phone v1.6.2](https://github.com/ml5js/p5-phone)** - Mobile sensors and camera management
+- **[p5-phone v1.6.3](https://github.com/ml5js/p5-phone)** - Mobile sensors and camera management
 - **[p5.sound](https://p5js.org/reference/#/libraries/p5.sound)** - Audio input (for microphone examples)
 - **[THREE.js](https://threejs.org/)** - 3D graphics (for THREE examples)
 

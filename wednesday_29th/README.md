@@ -23,7 +23,7 @@ This collection demonstrates the foundational setup for ML5 machine learning mod
 **Core Technologies:**
 - **p5.js** - Creative coding framework
 - **ml5.js v1.x** - Machine learning library
-- **p5-phone v1.6.2** - Mobile camera and sensor management
+- **p5-phone v1.6.3** - Mobile camera and sensor management
 
 **Canvas:** All examples use 405×720 pixels (9:16 portrait aspect ratio).
 

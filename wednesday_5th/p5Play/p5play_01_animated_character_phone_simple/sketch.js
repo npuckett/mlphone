@@ -30,7 +30,7 @@ KEY p5-phone METHODS:
 LIBRARIES REQUIRED:
 - p5.js v1.11.4
 - p5play v3
-- p5-phone v1.6.2
+- p5-phone v1.6.3
 */
 
 // ==============================================
